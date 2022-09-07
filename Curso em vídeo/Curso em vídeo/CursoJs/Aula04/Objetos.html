@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Objetos</title>
+</head>
+<body>
+    <header><h1>Objetos em Javascript</h1></header>
+    <ul>
+        <li>Declaração: var variavel = {atributo:"elemento", nome:"Paulo",idade:44, atualizar(anos){this.idade += anos} }</li>
+        <li>Pode ser declarada uma função como elemento do objeto</li>
+        <li>Se declarado variavel.atualizar(3), a idade passa a ser 47</li>
+        <li>Para incluir novo atributo: variavel.peso = 70</li>
+        <li>Para excluir um atributo: delete variavel.atributo</li>
+        <li>Para incluir um array: variavel.hobbies = ["xadrez","boliche"]</li>
+        <li>Para "chamar" o elemento: variavel.atributo // retorna o elemento</li>
+        <li>Também pode ser feito variavel["atributo"] que também retorna o elemento</li>
+        <li> Forma tem mais utilidade quando um atributo possuir um caractere especial. Exemplo: variavel.["last-name"]</li>
+        <li>var cor = "azul" // var decoracao = {medida:"grande",cor } // Quando a variável é declarada anteriormente, é necessário informar apenas a variável,
+             que ela já assume variável e valor. Equivale a: var decoracao = {medida:"grande",cor:cor }. Isso se o nome da propriedade for o mesmo nome da variável declarada</li>
+        <li>Juntando dois objetos: Object.assign (objeto alvo, outros objetos). Se o objeto alvo for informado como {}, será criado um novo objeto.</li>
+
+    </ul>    
+    <script>
+        var pais = {
+            nome:"Brasil",
+            capital:"Brasília",
+            continente:"América",
+            população:210000000,
+            atualizar(i){
+                this.população *= i},
+            estado:{
+                São_Paulo:{
+                    nome:"SP",
+                    capital:"São Paulo",
+                    cidades:["Campinhas","Guarulhos"]},
+                Minas_Gerais:{
+                    nome:"MG",
+                    capital:"Belo Horizonte",
+                    cidades: ["Poços de Caladas","Pouso Alegre"]}
+                }
+            }
+        
+        pais.atualizar(1.2)
+        pais.atualizar(1.2)
+        pais.superficie = 8500000 // incluir um atributo
+        delete pais.continente //para excluir um atributo
+        pais.maioresCidades = ["São Paulo","Rio de Janeiro", "Salvador","Belo Horizonte"] //inclui um array
+        console.log (pais)
+        console.log(pais.nome)
+        console.log(pais["nome"]) //A chamada usando colchete é mais usada quando existir um caracter especial em algum atributo.
+        
+        var cor = "azul"
+
+        var decoracao = {medida:"grande",cor } // Quando a variável é declarada anteriormente, é necessário informar
+          //apenas a variável, que ela ja inclui variável e valor. Equivale a: var decoracao = {medida:"grande",cor:cor }
+        console.log (decoracao)
+
+        var mamifero = "gato"
+        var ave = "passaro"
+        var aquatico = "peixe"
+        var animais = {réptil:"jacare",mamifero,ave,[aquatico]:"tubarão"} // quando quero que o índice seja o valor de uma variável e não a própria variável, informo entre [ ]
+        console.log (animais) // ave: "passaro", mamifero: "gato", réptil: "jacare", peixe: tubarão
+
+        //juntar objetos: - assign
+        var objeto1 = {
+            país:"Argentina",
+            capital:"Buenos Aires"
+        }
+        var objeto2 = {
+            idimoma:"espanhol",
+            continente:"América"
+        }
+
+        var objetoTotal = Object.assign ({},objeto1,objeto2) //primeiro parâmetro do ojeto assign é o alvo. Qaundo informado {}, será criado um novo objeto.
+        console.log (objetoTotal)
+        Object.assign (objeto1, objeto2) // o objeto1 foi passado como alvo, então os dados do objeto2 foram copiados para o objeto1. O objeto2 se manteve inalterado 
+        console.log (objeto1)
+        console.log (objeto2)
+        var objetoTotal2 = {objeto1, objeto2}
+        var objetoTotal3 = {...objeto1, ...objeto2} // forma resumida de juntar dois objetos em um novo (sread). Equivale ao Object.assign
+
+        console.log (objetoTotal2)
+        console.log (objetoTotal3)
+
+        var num = [2,3,4]
+        console.log (num)
+
+        //Getters e Setters
+        var continente = [
+            {
+                pais:"Alemanha",
+                capital:"Berlin"
+
+            },
+            {
+                pais:"Italia",
+                capital: "Roma"
+
+            },
+            {
+                pais: "França",
+                capital: "Paris"
+            },
+            {
+                pais: "Holanda",
+                capital: "Amsterdan"
+            }
+        ]
+
+        var pesquisa = {
+            posicao:0,
+            proximo(){
+                ++this.posicao
+            },
+            anterior(){
+                --this.posicao
+            },
+            get atual (){
+                return continente[this.posicao]
+            },
+            set atual (posicao){
+                this.posicao = posicao
+
+            }
+
+        }
+
+        console.log (pesquisa.atual) //se usada a palavra get antes da funçao, não é necessário usar os parenteses da invocação
+        pesquisa.proximo()
+        console.log (pesquisa.atual)
+        pesquisa.proximo()
+        console.log (pesquisa.atual)
+        pesquisa.anterior()
+        console.log (pesquisa.atual)
+        pesquisa.atual = 3
+        console.log (pesquisa.atual)
+        
+
+        console.log (continente[1].capital)
+
+
+
+
+    </script>
+</body>
+</html>

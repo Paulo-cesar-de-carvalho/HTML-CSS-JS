@@ -1,0 +1,120 @@
+<meta charset="UTF-8">
+<br>
+<h1>Exercícios da Lalá</h1>
+1) Solicite a usuário que digite três valores inteiros. Após a digitação, seu programa irá imprima a soma deles.<br>
+<input id="numero1"><input id = "numero2" ><input id = "numero3"><button>Soma</button><span id="resultadoSoma"></span><br><br>
+2) Leia um número inteiro, verifique se ele é primo e, caso seja, imprima a soma de seu sucessor e de seu antecessor.<br>
+<input id="primo"> <button id = "verificaPrimo">É primo?</button>
+<button id = "listaPrimos">Lista números primos</button><br><br>
+3) Calcule a média ponderada das notas de três provas (intervalo de 0 a 10).<br>
+ A primeira e a segunda provas tem peso 1 e a terceira tem peso 2. Ao final,
+ mostre a média do aluno e indique se o aluno foi aprovado. A média para aprovação é 6.<br> 
+ Utilize os campos do exercício 1<br>
+<button id = "mediaAlunos">Média de notas</button><br><br>
+4) Leia um número inteiro positivo N e imprima todos os números naturais de 0 até N em ordem decrescente.<br>
+Utilize os campos do exercício 2<br>
+<button id = "naturaisDecrescentes">Números naturais decrescentes</button><br>
+
+<script>
+    //inputs:
+    var entrada1 = document.querySelector("#numero1");
+    var entrada2 = document.querySelector("#numero2");
+    var entrada3 = document.querySelector("#numero3");
+    var primo1 = document.querySelector("#primo");
+    
+    //botões:
+    var botaoSoma = document.querySelector("button");
+    botaoSoma.onclick = soma;
+    
+    var botaoPrimo = document.querySelector("#verificaPrimo");
+    botaoPrimo.onclick = botaoPrimo1;
+
+    var botaoListaPrimo = document.querySelector("#listaPrimos");
+    botaoListaPrimo.onclick = botaoListaPrimos;
+
+    var botaoMediaAlunos = document.querySelector("#mediaAlunos");
+    botaoMediaAlunos.onclick = botaoMediaNotas;
+
+    var botaoNaturais1 = document.querySelector("#naturaisDecrescentes");
+    botaoNaturais1.onclick = botaoNaturais;
+    
+    //funções:
+    function soma() {
+        var spanResultado = document.querySelector("#resultadoSoma");
+        spanResultado.innerHTML = Number(entrada1.value) + Number(entrada2.value) +  Number(entrada3.value);
+    }
+    
+    function verificaprimo(numero){
+        for (var contador = 2; contador <= Math.round(Math.sqrt(numero)); contador++){
+            if (numero % contador == 0){
+                return false;
+                break;
+            }
+        }
+        return true;
+    }
+    function listaPrimos (ultimo){
+        primos = []
+        for (contador = 2; contador <= ultimo; contador++){
+            if (verificaprimo(contador)){
+                primos.push(contador);
+            }
+        }
+        return primos
+    }
+
+    function botaoPrimo1 (){
+        aux = primo1.value*1
+        if (verificaprimo(aux)){
+            alert(aux + " É primo. A soma do antecessor mais o sucessor é " + aux*2);
+        } else{
+            alert("Não é primo!");
+        }
+    }
+
+    function botaoListaPrimos (){
+        aux = primo1.value*1;
+        alert (listaPrimos(aux));
+    }
+    function mediaNotas (nota1, nota2, nota3){
+        var aux = (nota1 + nota2 + 2 * nota3)/4
+        return aux
+    }   
+    
+    function botaoMediaNotas (){
+        aux = mediaNotas(entrada1.value*1,entrada2.value*1,entrada3.value*1);
+        alert (aux);
+        if (aux >= 6){
+            alert (" *** Aluno Aprovado *** ");
+        } else {
+        alert (" *** Aluno Reprovado *** ");
+        }
+    }
+    function listaNatural (ultimo){
+        naturais = [];
+        for (contador = ultimo; contador >= 0; contador = contador - 1){
+            naturais.push (contador);
+        }
+        return naturais;
+    }
+    
+    function botaoNaturais(){
+        var aux = primo1.value * 1;
+        alert (listaNatural (aux));
+    }
+    //ainda não funcionou o laço:
+    function fibonacci (ate){
+        var lista = [1,2,3];
+        while (ultimo <= ate){
+            var tamanho = lista.length;
+            var ultimo = lista[tamanho - 1];
+            var penultimo = lista[tamanho - 2];
+            lista.push (penultimo + ultimo);
+        }
+        return lista;
+    }
+    
+    
+       
+    
+</script>

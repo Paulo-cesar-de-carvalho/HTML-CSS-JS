@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seletores na prática</title>
+    <style>
+        input{
+            height: 30px;
+            top: 600px;
+            text-align: center;
+        }
+    </style>
+
+</head>
+<body>
+    <h1>Somando Valores</h1>
+    <p>Para capturar elementos de um input e manipular</p>
+    <p> - Atribuir os inputs a uma variável</p>
+
+    <input type="number" name="text01" id="text01">
+    <input type="number" name="text02" id="text02">
+    <input type="button" value="Somar" onclick="somar()">
+    <input type="button" value="Subtrair">
+    <br><br>
+    <div id="resultado"></div>
+
+    <script>
+        function somar(){
+            var x = document.getElementById("text01") //os valores são extraídos como string
+            var y = document.getElementById("text02")
+            var res = document.getElementById("resultado")
+            x = parseFloat(x.value)
+            y = parseFloat(y.value)
+            res.innerHTML = ("A soma entre " + x  + " e "+ y +" é <strong>" + (x+y) + "</strong>.")// usando o método innerhtml é possível adicionar formatações (tags filhas)
+        }
+
+    </script>
+
+</body>
+</html>

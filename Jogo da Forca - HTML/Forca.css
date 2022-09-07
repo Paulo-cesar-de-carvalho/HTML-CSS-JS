@@ -1,0 +1,30 @@
+.titulo{
+    text-align: center;
+    font-size: 3em;
+    margin: 1em;
+}
+.insere{
+    margin: 1em;
+}
+
+.entrada{
+    width: 3em;
+    height: 3em;
+    padding: auto auto;
+    text-align: center;
+}
+.letra1{
+    border: 3px solid;
+    /* width: 2em;
+    height: 2em; */
+    padding: 0.5em;
+    
+    font-family: 'Courier New', Courier, monospace;
+
+    /* text-align: center; */
+    margin: 0.5em;
+    
+    
+    
+    
+}

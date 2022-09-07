@@ -1,0 +1,54 @@
+body{
+    background: rgb(201, 200, 200);
+}
+
+
+h1{
+    margin: 1em;
+    font-size: 3em;
+    text-align: center;
+    text-decoration-line: underline;
+    color: green;
+}
+
+.tabela{
+    font-size: 30px;
+    text-align: center;
+    width: 80%;
+    margin: auto auto;
+}
+
+
+.cabecalho{
+    text-transform: uppercase;
+    color: white;
+    background: black;
+    
+}
+th, td{
+    border: solid 2px black;
+    text-align: center;
+    width: 180px;
+    height: 1.5em;
+    
+}
+
+th{
+    margin: 1em auto;
+    padding: 1em auto;
+}
+
+tr:nth-child(2n){
+    background: gray;
+    
+}
+
+tr:hover{
+    font-weight: bold;
+    background: yellowgreen;
+    
+}
+tr:active{
+    background:red;
+    color: white;
+}

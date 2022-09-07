@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var nome = prompt("Qual seu nome")
+        var valor = parseFloat(prompt("Qual o valor?"))
+        document.write ("<br>Seu nome tem <stronger>" + nome.length + "</stronger> letras.</br>")
+        document.write ("Seu nome em maiúsculas é " + nome.toUpperCase())
+        document.write ("O valor é" + valor.toFixed(2).replace(".",","))
+        document.write ("<br> Valor: " + valor.toLocaleString("pt-br",{style: "currency", currency:"BRL"}))
+        document.write ("<br> Valor: " + valor.toLocaleString("pt-br",{style: "currency", currency:"USD"}))
+        document.write ("<br> Valor: " + valor.toLocaleString("pt-br",{style: "currency", currency:"EUR"}))
+    </script>
+</body>
+</html>

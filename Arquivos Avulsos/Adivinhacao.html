@@ -1,0 +1,62 @@
+<meta charset="UTF-8">
+<br><br>
+<div style="text-align:center"></p><h1> *** BEM VINDO AO JOGO DA ADIVINHAÇÃO *** </h1></div><br>
+<script defer>
+    function mostra(texto) {
+        document.write (texto, "<br>" );
+    }
+    function titulo (texto, tamanho){
+        mostra("<h"+tamanho+">" + texto + "</h"+tamanho+">");
+    }
+//Sorteio aleatório, arredondando.
+var numerosecreto = Math.round(Math.random()*100);
+var totalTentativas
+// Solicita o nível do jogo.
+var nivel = parseInt(prompt("Escolha o nível: (1) Fácil - (2) Médio - (3) Difícil"))
+// Trata valores inválidos para escolha do nível
+while (nivel != 1 && nivel !=2 && nivel !=3){
+    alert ("Digite uma opção válida")
+    var nivel = parseInt(prompt("Escolha o nível: (1) Fácil - (2) Médio - (3) Difícil"))
+}
+// Define a quantidade de tentativas de acordo com o nível escolhido.
+if (nivel == 1){
+    totalTentativas = 12
+}
+if (nivel == 2){
+    totalTentativas = 8
+}
+if (nivel == 3){
+    totalTentativas = 5
+}
+
+var tentativa = 1
+//Loop para jogar enquanto houver tentativas e quando não tiver acertado o número secreto.
+while ((chute != numerosecreto) && (tentativa <= totalTentativas)){
+    //Recebe o número secreto, transformando string em integer
+    var chute = parseInt(prompt("Digite seu chute "));
+    //Trata valores não numéricos digitados como chute
+    while (isNaN(chute)) {
+        alert ("Não é um número.")
+        var chute = parseInt(prompt("Digite seu chute "));
+    }
+    var acertou = (chute == numerosecreto);
+    // Exibe qual tentativa está
+    mostra("TENTATIVA " + tentativa + " DE " + totalTentativas + "  - NUMERO DIGITADO:  " + chute);
+    if (acertou) {
+        titulo("<div style=text-align:center></p><h1> *** PARABÉNS!!!! *** VOCÊ GANHOU *** </h1></div>",1);
+        break
+    }
+    if (numerosecreto > chute) {
+        mostra("O NÚMERO SECRETO É MAIOR DO QUE O NÚMERO DIGITADO<br><br>");
+    }
+    if (numerosecreto < chute) {
+        mostra("O NÚMERO SECRETO É MENOR DO QUE O NÚMERO DIGITADO<br><br>");
+    }
+tentativa++
+}
+// Exibe o numero secreto se errar todas as tentativas.
+document.write ("<div style=text-align:center></p><h1> *** FIM DE JOGO *** </h1></div>")
+if (chute != numerosecreto){
+    titulo("O Número secreto é " + numerosecreto,1);
+}
+</script>

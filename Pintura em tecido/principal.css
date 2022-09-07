@@ -1,0 +1,99 @@
+body{
+    background:#f1b7d4;
+    
+    font-weight: bold;
+    text-align: center;
+
+}
+.cabecalho {
+    padding-top: 1em;
+    background: #e56272;
+}
+.flor1{
+    display: inline;
+    position: absolute;
+    text-align: right;
+}
+.tesoura{
+    display: inline;
+    position: absolute;
+    vertical-align: top;
+    height: 3em;
+    margin: 2.9em 1em 0px 0px;
+    width: 10%;
+}
+
+.cabecalho .titulo-principal{
+    font-size: 3em;
+    color: black;
+    padding-top: 0.8em;
+    width: 60%;
+    margin: 0 auto 0 10px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    display: inline-block;
+}
+.cabecalho p{
+    text-align: right;
+    margin: 0em 10em;
+    font-size: 1.3em;
+    
+
+}
+
+.flor2{
+    text-align: left;
+}
+.tracejado, .tracejado2{
+    font-size: 2em;
+    color: whitesmoke;
+}
+.lable-busca{
+    padding: 1.3em auto;
+    height: 1.9em;
+    margin-top: 2em;
+    vertical-align: auto; 
+}
+
+.tema-desenho{
+    margin: 2em auto 2em auto;
+    padding-bottom: 2em;
+}
+
+.tema-desenho li{
+    display: inline;
+    margin: 1em ;
+    font-size: 2em;
+    color: whitesmoke;
+    
+}
+.tracejado2{
+    color: violet;
+    font-weight: bold;
+    color: black;
+}
+.primeiro ul{
+    display: inline-block;
+    margin: 1.5em;
+    border: none;
+    padding: 1.5em 0.5em;
+    background: rgba(245, 99, 213, 0.808);
+    border-radius: 20px;
+    width: 25%;
+    height: 15em;
+
+}
+
+.primeiro p{
+    margin: 0.5em 0.5em;
+}
+
+
+.rodape{
+    background: violet;
+    color: whitesmoke;
+    padding:1em;
+
+}
+.rodape li{
+    margin: 0.3em auto;
+}

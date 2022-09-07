@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Título</title>
+        
+        <style>
+            body{
+                font: 15px Verdana normal;
+                
+            }
+            th{
+                border: green solid 2px;
+            }
+            td{
+                border: red 1px;
+                border-style:solid;
+                text-align: center;
+            }
+            form{
+                border: solid;
+                width: 480px;
+            }
+            tfoot td{
+                font-weight: bold;
+            }
+            .imagem{
+                width: 40px;
+                height: 40px;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <h1>Título h1 dentro da tag header</h1>
+        </header>
+        <main>
+            <section>
+                <h2>Litas e tabelas:</h2>
+                <ul>A lista não ordenada deve vir com a tag ul
+                    <li>Cada item da lista vem com a tag li</li>
+                </ul>
+
+                <ol> A lista ordenada possui a tag ol
+                    <li>Seus itens também vêm com a tag li</li>
+                    <li>Os itens poder vir enumerados</li>
+                </ol>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>th1 do tr do thead</th>
+                            <th>th2 do tr do thead</th>
+                            <th>th3 do tr do thead</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>tr 1 td 1</td>
+                            <td>tr 1 td 2</td>
+                            <td>tr 1 td 3</td>
+                        </tr>
+                        <tr>
+                            <td>tr 2 td 1</td>
+                            <td>tr 2 td 2</td>
+                            <td>tr 2 td 3</td>
+                        </tr>
+                        <tr>
+                            <td>tr 3 td 1</td>
+                            <td>tr 3 td 2</td>
+                            <td>tr 3 td 3</td>
+                        </tr> 
+                        
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td>tr rodapé td 1</td>
+                            <td>tr rodapé td 2</td>
+                            <td>tr rodapé td 3</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </section>
+            <section>
+                <h2>Controles:</h2>
+                <p><input type="button" value="Botão"> input do tipo <strong>button</strong>, seu nome exibido é o value</p>
+                <p>
+                    <label for="label-input">Input do tipo <strong>number</strong>: 
+                    </label><input type="number" name="label-input" id="label-input"> Input do tipo <strong>text</strong>: 
+                    <input type="text" required>
+                    Input do tipo <strong>tel</strong>: <input type="tel" name="" id="">
+                </p>
+                <p>Input do tipo <strong>arquivo</strong>.Anexa arquivo: <input type="file" name="" id=""></p>
+                <p>Input do tipo <strong>data</strong>: <input type="date" name="" id="">
+                    Input do tipo <strong>month</strong>: <input type="month" name="" id="">
+                    Input do tipo <strong>time</strong>: <input type="time" name="" id="">
+                </p>
+                <p>Input do tipo <strong>password</strong>: <input type="password" name="" id=""></p>
+                <p>Input do tipo <strong>range</strong>. O valor(value) é dado em porcentagem: <input type="range" name="" id="range" value="75"></p>
+                <p><strong>Select</strong> contém option. o conteúdo de cada option é variavel.text: 
+                    <select name="" id=""> 
+                        <option value="">Opção1</option>
+                        <option value="">Opção2</option>
+                    </select>
+                </p>
+                <p>O input do tipo <strong>checkbox</strong> permite a marcação de mais de um item. A opção checked marca o checkbox.
+                    <input type="checkbox" name="selecione" id="sel" checked>
+                    <input type="checkbox" name="selecione" id="sel"><input type="checkbox" name="selecione" id="sel">
+                </p>
+                <form action="">
+                    <p>O input do tipo <strong>radio</strong> tem a opção de marcar apenas um dos itens, desde que tenham mesmo "name"<input type="radio" name="input-radio" id="rad"><input type="radio" name="input-radio" id="rad" checked><input type="radio" name="input-radio" id="rad"></p>
+                    <p>input do tipo <strong>reset</strong>. Funciona apenas dentro de um form: <input type="reset" value="Reiniciar formulário"></p>
+                </form>
+                <p>Input do tipo <strong>color</strong>. Value que determina a cor deve ser hexadecimal: <input type="color" name="" id="" value="#e66465"></p>
+                
+                <p><strong>Textarea: </strong> <textarea name="" id="" cols="30" rows="2"></textarea></p>
+
+                <p>Input do tipo <strong>"image" </strong>: <input type="image" src="Momentos de dia/manha.jpeg" alt="teste" class="imagem"></p>
+                <input type="url" placeholder="www.google.com" id="" value="www.google.com"> - Verificar input do tipo url
+                
+                
+
+                <fieldset>
+                    <legend>
+                        <option value="test1">legend option??</option>
+                        <option value="test2">legend option??</option>
+                        <option value="test3">legend option??</option>
+                    </legend>
+                </fieldset>
+            </section>
+            <section>
+                <h2>Links, imagens, vídeos, etc:</h2>
+                <p><a href = "Eventos DOM.html"> - Tag a (âncora) vincula arquivos html </p>
+                <p></p>
+            </section>
+        </main>
+        <footer>Rodapé</footer>
+        
+    </body>
+</html>

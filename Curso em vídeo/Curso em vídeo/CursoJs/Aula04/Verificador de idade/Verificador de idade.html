@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificador de idade</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <header>
+        <h1>Verificador de idade</h1>
+
+    </header>
+    <section>
+        <div>
+           <p>Ano de Nascimento: <input type="number" name="ano" id="ano" min="1800"></p>
+           
+           <p>Sexo: 
+               <input type="radio" name="sex" id="mas" checked >
+               <label for="mas">Masculino</label> 
+               <input type="radio" name="sex" id="fem">
+               <label for="fem">Feminino</label></p>
+            <input type="button" value="Verificar" id="btn">
+        </div>
+        <div id="resultado">
+            Informe o ano e o sexo.
+        </div>
+    </section>
+    <footer>
+        <p>&copy Curso em vídeo</p>
+    </footer>
+    <ul>Foram utilizadas par contrução desta página:
+        <li>Condições</li>
+        <li>Criação de elementos pelo Javascrip</li>
+        <li>Adição de atributos ao elemento via Javascript</li>
+        <li>Vinculação de elemento ao elemento pai (appendChild)</li>
+        <li>Vinculção de um label ao input for = id</li>
+        <li>Bordas arredondadas, sombra</li>
+    </ul>
+    <script src="script.js"></script>
+    
+</body>
+</html>

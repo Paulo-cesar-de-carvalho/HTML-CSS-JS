@@ -1,0 +1,240 @@
+body{
+    font-family: "Montserrat", sans-serif;
+}
+
+.cabecalho{
+    background: grey;
+    margin: 0px auto;
+    width: 100%;
+    padding: 0 0 50px 0;
+}    
+
+.imagem-logo{
+    width: 30%;
+    margin-left: 100px;
+    padding: none;
+    display: inline-block;
+}
+nav{
+    display: inline-block;
+    position: absolute;
+    vertical-align: top;
+    text-transform: uppercase;
+    margin: 108px auto;
+    width: 70%;
+    font-size: 25px;
+    text-decoration: none;
+    
+}
+.menu-principal li{
+    display: inline;
+    padding: 25px;
+    text-decoration: none;
+}
+.menu-principal li:hover{
+    font-size: 30px;
+    font-weight: bold;
+    color: orange;
+}
+
+.banner{
+    width: 100%;
+    }
+.subt{
+    
+    
+    margin-top: 10px;
+    padding: 2px 20px;
+}
+
+.subtitulo{
+    font-size: 2em;
+    margin: 1em;
+    font-style: italic;
+    text-align: center;
+}
+.texto-sobre{
+    display: inline;
+    padding-bottom: 50px;
+    font-size: 27px;
+    
+}
+
+
+.imagem-utensilios img{
+    display: inline;
+    width: 10%;
+    float: left;
+    vertical-align: top;
+}
+
+em{
+    font-weight: bold;
+    color: red
+}
+h3{
+    text-align: center;
+    font-size: 30px;
+}
+.estabelecimento{
+    text-align: center;
+    background: linear-gradient(white, grey);
+}
+.estabelecimento p{
+    font-size: 2em;
+    padding-bottom: 1em;
+}
+
+.mapa{
+    padding: 15px;
+     
+}
+.beneficios-e-imagem{
+    background: grey;
+    display: inline-block;
+}
+
+.beneficios{
+    display: inline-block;
+    width: 30%;
+    vertical-align: top;
+    font-weight: bold;
+    font-size: 20px;
+    text-align: left;
+    margin-left: 15%;
+    line-height: 2.0;
+    background: gray;    
+}
+.beneficios .item:before{
+    content: "➤";
+}
+.segundaimagem{
+    width: 50%;
+    opacity: 0.3;
+    transition: 1s;
+}
+.segundaimagem:hover{
+    opacity: 1;
+}
+.video{
+    text-align: center;
+    background: grey;
+    margin: 3em auto 0 auto;
+    padding:1em 10em;
+}
+.rodape{
+    background: url("bg.jpg");
+    text-align: center;
+    padding: 30px 0;
+}
+.copyright{
+    color: white;
+}
+h3:first-letter{
+    font-size: 1.5em;
+    
+}
+/*Configuração exclusiva da página contatos*/
+form{
+    margin-left: 1em;
+    font-weight: bolder;
+}
+
+
+.entrada, form legend, form label{
+    display: block;
+    margin-top: 10px;
+    width: 60%;
+    padding: 13px 5px;
+    font-size: 1.1em;
+}
+#mensagem{
+    height: 10em;
+}
+.selecao{
+    width: 200px;
+    font-size: 20px;
+    background: rgb(199, 195, 195);
+}
+.enviar{
+    width: 32%;
+    height: 2em;
+    font-size: 30px;
+    transition: 1s all;
+    margin-left: 30px;
+}
+.enviar:hover{
+    cursor:pointer;
+    background:orangered;
+    color: white;
+    transform: scale(1.1);
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+
+}
+.horario{
+    margin: 30px;
+}
+.horario td, .horario th{
+    text-align: center;
+    border: 1px solid black;
+    line-height: 2em;
+    width: 100px;
+}
+.horario thead th{
+    background: black;
+    color: white;
+    font-weight: bold;
+}
+
+
+
+@media screen and (max-width:480px) {
+    .caixa, .principal, .beneficios-e-imagem, .mapa-conteudo, .video, .beneficios, nav, footer,.beneficios li {
+        width: auto;
+    }
+   
+    h1{
+        text-align: center;
+    }
+
+    .menu-principal li{
+        margin: 0 1em;
+        padding: 0 0;
+        
+    } 
+    nav{
+        position: static;
+        display:block;
+        text-align: center;
+        margin: 0px 0px;
+        font-size: 1em;
+    }  
+
+    .beneficios, .segundaimagem, footer, .beneficios-e-imagem{
+        width: 100%;
+    }
+
+    .beneficios{
+        margin: 0px 0px;
+    }
+    
+    .beneficios li{
+        width: 100%;
+    }
+    .video{
+        padding: 1em 0;
+    }
+    .entrada, form legend, form label{
+        margin: 0 0;
+        width: 80%;
+        
+    }
+    .enviar{
+        width: auto;
+        margin-left: 1px;
+        transform: scale(0.8);
+    }
+    
+}

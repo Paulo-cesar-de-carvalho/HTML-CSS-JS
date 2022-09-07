@@ -1,0 +1,31 @@
+<meta charset="UTF-8">
+
+<script>
+    function mostra(texto) {
+        document.write (texto, "<br>" );
+    }
+    function titulo (texto, tamanho){
+        mostra("<h"+tamanho+">" + texto + "</h"+tamanho+">");
+    }
+   // var nome = prompt("Informe seu nome: ");
+    //var peso = parseInt(prompt(nome + ", informe sua massa em quilogramas: "));
+    //var altura = parseInt(prompt(nome + ",informe sua altura em metros (utilize . e não vírgula)"));
+    var nome = "Paulo"
+    var peso = 32
+    var altura = 1.68
+    imc = peso / (altura * altura);
+    titulo(nome + ", seu IMC é: " + imc, 2);
+    if (imc < 18.5) {
+        titulo("Você está abaixo do recomendado", 4)
+    }
+    if (imc > 35) {
+        titulo("Você está arriba do recomendado", 4)
+    }
+    
+    if (imc >= 18.5 &&  imc <=35) {
+        titulo("Seu IMC está excelente", 3)
+    }
+
+
+
+</script>

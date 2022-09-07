@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Condições</title>
+
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    
+    <style>
+        body{
+            margin-left: 15px;
+        }
+        h1{
+            text-decoration-line: underline ;
+        }
+        input{
+            height: 40px;
+            text-align: center;
+            line-height: 40px;
+        }
+        .multado{
+            color: red;
+            font-size:larger;
+        }
+        .resultado-voto{
+            margin: 3px;
+            font-weight: bold;
+            font-size: 25px;
+
+        }
+    </style>
+</head>
+<body>
+    <h1>Sistema de multas</h1>
+    <p>A velocidade máxima é <strong>60Km/h</strong></p>
+    Informe sua velocidade: <input type="number" name="velocidade" id="velocidade">Km/h
+    <input type="button" value="Verificar" id="verificar">
+    <input type="button" value="Verifica ? :" id="verificar2">
+    <div class="resultado-velocidade"></div>
+    <div class="resultado-multa"></div>
+
+    <h1>Sistema de votação no Brasil</h1>
+    Informe sua idade: <input type="number" name="idade" id="idade"> anos. 
+    <input type="button" value="Pesquisar" id="pesquisar">
+    <div class="resultado-voto"></div>
+    <p id="saudacao"></p>
+    <div>
+        <ul>A montagem desta página aborda temas como:
+            <li>Condições</li>
+            <li>switch</li>
+            <li>Seletores de elementos</li>
+            <li>Interpolação de string</li>
+            <li>new Date - getHours()</li>
+            <li>Ternário ? :</li>
+            <li>Escutador de evento</li>
+            <li>Adição de classe</li>
+        </ul>
+    </div>
+
+    <script>
+        var texVelocidade = document.querySelector("#velocidade")
+        var butVerificar= document.querySelector("#verificar")
+        var butVerificarAlternativo = document.querySelector("#verificar2")
+        var res = document.querySelector(".resultado-velocidade")
+        var multa = document.querySelector(".resultado-multa")
+        var textIdade = document.querySelector("#idade")
+        var butPesquisar = document.querySelector("#pesquisar")
+        var resVoto = document.querySelector (".resultado-voto")
+        var agora = new Date()
+        var hora = agora.getHours()
+        var textSaudacao = document.getElementById("saudacao")
+
+        butVerificar.addEventListener("click", verificar_velocidade)
+        butPesquisar.addEventListener("click",verificar_voto)
+        butVerificarAlternativo.addEventListener("click", verificar_alternativo)
+
+        var saudacao = "Bom dia!"
+        var mes = "definir"
+        var diaSemana = "definir"
+
+
+        if (hora < 12){
+            saudacao = "Bom dia"    
+        } else if (hora >=18) {
+            saudacao = "Boa noite"
+        } else {
+            saudacao = "Boa tarde"
+        }
+
+        switch(agora.getMonth()){// Contagem do mês e dos dias da semana começam no zero
+            case 0:
+                mes = "janeiro"
+                break
+            case 1:
+                mes = "fevereiro"
+                break
+            case 2:
+                mes = "março"
+                break
+            case 3:
+                mes = "abril"
+                break
+            case 4:
+                mes = "maio"
+                break
+            case 5:
+                mes = "junho"
+                break
+            case 6:
+                mes = "julho"
+                break
+            case 7:
+                mes = "agosto"
+                break
+            case 8:
+                mes = "setembro"
+                break
+            case 9:
+                mes = "outubro"
+                break
+            case 10:
+                mes = "novembro"
+                break
+            case 11:
+                mes = "dezembro"
+                break
+            
+        }
+
+        switch (agora.getDay()){
+            case 0:
+                diaSemana = "domingo"
+                break
+            case 1:
+                diaSemana = "segunda"
+                break
+            case 2:
+                diaSemana = "terça"
+                break
+            case 3:
+                diaSemana = "quarta"
+                break
+            case 4:
+                diaSemana = "quinta"
+                break
+            case 5:
+                diaSemana = "sexta"
+                break
+            case 6:
+                diaSemana = "sábado"
+                break
+            default:
+                diaSemana = "dia inválido"
+                break
+        }
+
+        textSaudacao.innerHTML = saudacao + `!! Hoje é ${diaSemana}, dia ${agora.getDate()} de ${mes} de ${agora.getFullYear()}!` 
+        
+        function verificar_velocidade(){
+            var velocidade = Number (texVelocidade.value)
+            res.innerHTML =  `<p>Sua velocidade registrada foi de <strong>  ${velocidade} </strong> Km/h.</p>`
+            if (velocidade > 60){
+                multa.innerHTML = "Você foi multado!"
+                multa.classList.add ("multado")
+            }
+        }
+        function verificar_alternativo(){
+            var velocidade = Number (texVelocidade.value)
+            multa.innerHTML = "ok"
+            velocidade>60?(multa.innerHTML = "Você foi multado!"):(multa.innerHTML = "Você não foi multado!")
+        }
+        function verificar_voto (){
+            var idade = Number(textIdade.value)
+            if (idade < 16){
+                resVoto.innerHTML = "Não vota"
+            } else if (idade < 18 || idade > 65){
+                resVoto.innerHTML = "Voto opcional"
+            } else {
+                resVoto.innerHTML = "Voto obrigatório"
+            }
+        }
+    </script>
+</body>
+</html>

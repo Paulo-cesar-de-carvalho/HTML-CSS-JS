@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Calendário Perpétuo</title>
+        
+        <link rel = "stylesheet" href= "Calendario.css">
+    </head>
+    <body onload="criar_dias(new Date)">
+        <header>
+            <input type="number" name="ano" id="ano" value="2022">
+            <p>mes/ano</p>
+        </header>
+        <main>
+            <img src="arame.png" alt="Arame do Calendario" class="arame">
+
+            <section id="area-calendario">
+                <p class="cabeca">
+                    <input type="button" value="<<<" id="anterior">
+                    <input type="button" value=">>>" id="proximo">
+                    <div class="mes-ano"></div>
+                </p>
+                <table class="dia-do-mes" id="dia-do-mes"></table>
+
+            </section>
+            
+        </main>
+        <script src="Calendário.js"></script>    
+    </body>
+</html>

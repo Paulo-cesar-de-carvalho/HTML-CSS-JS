@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h1{
+            text-align: center;
+            color: blue;
+        }
+        div{
+            font: normal 18pt Arial;
+            background-color: rgb(169, 236, 169);
+            color: aliceblue;
+            height: 150px;
+            width: 600px;
+            line-height: 150px;
+            text-align: center;
+            margin: 5px;
+            
+        }
+    </style>
+</head>
+<body style="background-color: rgb(214, 212, 212);">
+    <h1>Eventos do DOM</h1>
+    <p>Alguns dos principais eventos do DOM. Podem ser usados tanto no html quanto no javascript.</p>
+    <p>No javascript é necessário utlizar o escutador de evento: elemento.addEventListener("click",função sem os parenteses)</p>
+    <p>No html usa-se a forma on+evento = função entre aspas, com os parenteses. Exemplo: onclick = "clicar()", dentro da tag do elemento desejado. </p>
+    
+    <div id="primeira" onclick="clicar()" onmouseenter="entrar()" ondblclick="clicarduplo()" onmouseout="sair()" onmouseup="soltar()" onmousedown="apertar()"> interaja aqui
+
+    </div>
+    <div id="segunda" onmousemove="mover()">
+        segunda
+    </div>
+    <div id="terceira">
+        terceira
+    </div>
+    <div id="quarta">
+        Usando a propriedade de escutador de evento.
+    </div>
+
+    <script>
+        var a = document.querySelector("div#primeira")
+        var b = document.querySelector("div#segunda")
+        var c = document.querySelector("div#terceira")
+        var d = document.querySelector("div#quarta")
+        var x = 0 
+        //variáveis com valores atribuidos fora das funções valem para todas as funções abaixo.
+        //no quarto elemento foi criado um escutador de eventos no próprio javascript. O nome da função deve vir sem os parênteses. Repare que fica mais limpo o código html.
+        d.addEventListener("click",clicar)
+        d.addEventListener("mouseenter", entrar)
+        d.addEventListener("mouseout", sair)
+        d.addEventListener("dblclick", clicarduplo)
+        d.addEventListener("mousedown", apertar)
+        d.addEventListener("mouseup", soltar)
+        d.addEventListener("mousemove", mover)
+
+
+        function clicar(){
+            //Uma forma de chamar o evento é escrevê-lo no próprio html. Exemplo: onclick - usado na div área 
+            b.style.color = "blue"
+            b.innerText = "clicou"
+        }
+
+        function entrar(){
+            a.style.background = "yellow"
+            a.innerText = "Mouse entrou na área"
+            a.style.color = "black"
+        }
+
+        function sair(){
+            a.style.background = "black"
+            a.innerText = "Mouse saiu da área"
+            a.style.color = "white" 
+        }
+
+        function clicarduplo(){
+            b.style.color = "orange"
+            b.innerText = "clicou duplo"
+        }
+
+        function soltar(){
+            c.style.color = "green"
+            c.innerText = "sortei"
+        }
+
+        function apertar(){
+            c.style.color = "green"
+            c.innerText = "pertei"
+        }
+
+        function mover(){
+            c.style.color = "green"
+            c.innerText = "movi " + x + " vezes"
+            x ++
+        }
+        
+        
+    </script>
+
+</body>
+</html>

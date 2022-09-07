@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title >Seletores</title>
+    <style>
+        body{
+            background-color: brown;
+            text-decoration: none;
+
+        }
+        ul{
+            text-decoration:aqua ;
+            color: rgba(0, 0, 0, 0.815);
+            font-weight: bold;
+        }
+        .listagem{
+            padding: 2px;
+            margin: 3px;
+            border-color: black;
+            border: 3px;
+        }
+
+    </style>
+</head>
+<body>
+    <h1 id="identificador">Inciando os primeiros passos - <u>Seletores</u></h1>
+    <h2>Aprendendo utilizar o <u><strong>DOM</strong></u>:</h2>
+    
+    <div class="listagem" >Formas de selecionar elementos:
+        <ul>Por tag: document.getElementsByTagName("tag entre aspas")[indice] - É  necessário informar o índice entre colchetes. </ul>
+        <ul>Por id: document.getElementById("id entre aspas") - Não é necessário o índice .</ul>
+        <ul>Por classe: document.getElementsByClassName("classe entre aspas")[indice] - É  necessário informar o índice entre colchetes. </ul>
+        <ul>Por nome:document.getElementsByName("nome entre aspas")[indice] - É  necessário informar o índice entre colchetes. 
+            Válido apenas para elementos que admitam a propriedade nome.</ul>
+        <ul>Por indicadores CSS: document.querySelector(indicadors de CSS entre aspas) - Classe = . e id = #. Localiza a primeira ocorrência.
+            Exemplos: document.querySelector("div#indicador"), document.querySelector("div.classe")
+.        </ul>
+    </div>
+    
+    <p class="resultado">Aqui é o resultado</p>
+    <div id="msg">clique em mim</div>
+    <input type="number" name="entrada" id="entra">
+    <div id="resultado"></div>
+    <script>
+
+        var marca = document.getElementsByTagName("body")[0] // índice começa no zero
+        var marca1 = document.getElementsByTagName("p")[0]  //atribui à variável marca1, o primeiro parágrafo da página
+        var id = document.getElementById ("identificador") //não tem índice (singular)
+        var classe = document.getElementsByClassName("listagem")[0]
+        var nome = document.getElementsByName("entrada")[0] //tag input aceita a propriedade name
+        var seletor = document.querySelector ("p.resultado")
+        var seletor2 = document.querySelector ("div#resultado")
+        var seletor3 = document.querySelector ("div#msg")// # para id; . para classe (indicadores CSS)
+
+        marca.style.backgroundColor = "grey" // tornou o fundo do body cinza.
+        marca1.style.color = "white" //manipulando os elementos através das variáveis
+        id.style.color = "green" // tornou o título verde.
+        classe.style.backgroundColor = "green" // tornou o fundo da listagem verde
+        classe.style.color = "white" // tornou o enunciado da lista branco
+        nome.style.color = "blue" // tornou o texto do input azul
+        nome.style.backgroundColor = "black" //tornou o fundo do input preto
+        seletor3.style.color = "red" //tornou o clique em mim vermelho
+        seletor3.innerHTML = id.innerHTML
+        seletor3.style.backgroundColor = "orange"
+        seletor2.innerHTML = "div com id resultado"
+        seletor2.style.color = "yellow"
+        seletor.style.backgroundColor = "black"
+        seletor.innerHTML = "p com classe resultado"
+        
+    </script>
+    
+</body>
+</html>

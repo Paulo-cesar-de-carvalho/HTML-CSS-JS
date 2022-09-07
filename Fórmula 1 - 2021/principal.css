@@ -1,0 +1,52 @@
+.titulo-principal{
+    text-align: center;
+    font-size: 3em;
+    margin: 0.5em 3em 0.5em 3em;
+    text-decoration: underline;    
+}
+
+td {
+    text-align: center;
+    padding: 0.8em;
+    border: solid;
+    border-color: black;
+}
+
+th{
+    writing-mode:vertical-lr;
+    text-align: center;
+    padding: 0.5em 0;    
+    transform: rotate(180deg);
+    border: solid black;    
+    vertical-align: middle;    
+}
+
+
+
+.resultado, .classificacao{
+    text-align: center;
+    margin: auto;
+}
+
+.posicao, .cabecalho-classificacao{
+    text-transform: uppercase;
+    font-weight: bold;
+}
+#tabela{
+    background-color:rgb(212, 211, 211);
+}
+
+:active .chegada{
+    background-color: chartreuse;
+    text-decoration: red;
+    font-weight: bold;
+}
+.invisivel{
+    display: none;
+}
+.evidencia{
+    font-weight: bold;    
+    background-color: chocolate;
+    transition: 1.2s;
+    
+}

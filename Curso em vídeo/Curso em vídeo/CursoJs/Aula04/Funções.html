@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Funções</title>
+    </head>
+    <body>
+        <header><h1>Funções</h1></header>
+        <main>
+            <section>
+                <input type="button" value="Fibonacci" onclick="fibonacci()">
+                <label for="qte">Informe a quantidade de elementos para a sequencia: </label><input type="number" name="" id="qte">
+                <p><div id="res"></div></p>
+                <p>
+                    <label for="fat">Calculando o Fatorial usando recursividade. Número: </label>
+                    <input type="number" name="" id="num-fat">
+                    <input type="button" value="Fatorial" id="fat">
+                    <div id="res-fat"></div>
+                </p>
+            </section>
+            <div></div>
+        </main>
+        <footer>Fim</footer>
+        <script>
+            function fibonacci (){
+                var res = document.querySelector("#res")
+                var n =Number(document.querySelector("#qte").value)
+                
+                var sequencia = ""
+                if (n == 0){
+                    sequencia = "0"
+                } else if (n == 1){
+                    sequencia = "0, 1"
+                } else{
+                    sequencia = "0, 1"
+                    var resultado = 0
+                    var ultimo = 1
+                    var penultimo = 0
+                    for (i=2 ; i<=n ; i++){
+                        resultado = ultimo + penultimo
+                        sequencia += `, ${resultado}`
+                        penultimo = ultimo
+                        ultimo = resultado
+                    }
+                }
+                res.innerHTML = sequencia
+           }
+
+           function fatorial (n){
+               if (n ==1){
+                   return 1
+               } else{
+                   return n * fatorial(n-1)
+               }
+           }
+           var btnFat = document.querySelector("#fat")
+           btnFat.addEventListener("click", function(){
+               var num = Number(document.querySelector("#num-fat").value)
+               var res = document.querySelector("#res-fat")
+               res.innerHTML = fatorial (num)
+           })
+
+
+
+        </script>
+        
+    </body>
+</html>

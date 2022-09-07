@@ -1,0 +1,77 @@
+/*medidas 19.50 X 14.00*/
+
+header, body{
+    background-color: black;
+    width: 95%;
+    margin: 0 2.5%;
+}
+
+.arame{
+    width: 95%;
+    margin: 0 2.5%;
+    border: beige;
+}
+
+#area-calendario{
+    width: 95%;
+    margin: 0 2.5%;
+    background-color: beige;
+    border: solid beige 1.5px;
+    height: 700px;
+    vertical-align: top;
+}
+
+.mes-ano{
+    height: 10%;
+    width: 90%;
+    margin: 15px 5%;
+    border: 15px beige solid;
+    text-align: right;
+    color: blue;
+    font-size: 300%;
+    font-weight: bold;
+}
+
+th{
+    color:blue
+}
+
+td{
+    background-color: none;
+    border: solid blue 1px;
+    color: blue;
+    vertical-align: middle;
+    text-align: center;
+    font-weight: bold;
+    font-size: 300%;
+}
+
+.dia-do-mes{
+    width: 90%;
+    height: 120px;
+    margin: 1em auto;
+    height: 80%;
+    border: none ;
+    opacity: 100%;
+}
+
+.domingo{
+    border: solid orangered 1px;
+    color: orangered;
+}
+
+.hoje{
+    background-color: green;
+    color: white
+}
+
+.feriado{
+    background-color: orangered;
+    color: white;
+}
+
+.invisivel {
+    background-color: none;
+    border: none;
+    color: beige;
+}

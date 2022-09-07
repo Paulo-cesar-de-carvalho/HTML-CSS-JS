@@ -1,0 +1,74 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <style>
+            #teste{
+                margin: auto auto;
+                text-align: center;
+                border: 1px solid brown;
+                width: 60%;
+                height: auto;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Estrelas</h1>
+        <label for="estrelas">Escolha o número de estrelas: <input type="text" id="estrela"></label>
+        <button id="ok">OK</button>
+        <div id="teste">
+        </div>
+        <div>
+            <p id = p1>teste1</p>
+            <p>teste2</p>
+            <p>teste3</p>
+            <table>
+                <td>
+
+                </td>
+            </table>
+        </div>    
+    </body>
+    
+</html>
+<script>
+    function NumeroEstrelas() {
+        var aux = document.querySelector("#estrela");
+        aux = parseInt(aux.value);
+        var teste = document.querySelector("#teste")
+        
+        lista = []
+        for (var linha = 1; linha<=aux; linha++){
+            for (var coluna = 1; coluna <= aux; coluna ++){
+                
+                lista.push("✯")
+                document.createElement("p")
+
+                //var p = document.querySelectorAll("p")
+                //p[linha-1].textContent = lista
+                
+            }
+            lista.push("</p><p>")
+        }
+        teste.textContent = lista
+        
+    }
+    var botaoOk = document.querySelector("button");
+    //função sem os parenteses é chamada somente quando acionado o botão. Com parênteses, ela executa ao carregar a página
+    botaoOk.onclick = NumeroEstrelas;
+
+
+    function mostra(texto) {
+        document.write (texto, "<br>    " );
+    }
+    function titulo (texto, tamanho){
+        mostra("<h"+tamanho+">" + texto + "</h"+tamanho+">");
+    }
+//var aux = parseInt(prompt("Lado do quadrado:"))
+//var aux2 = document.querySelector("#estrela")
+//aux = aux2.textContent
+   // var teste = document.querySelector("#teste")
+   // teste.textContent = aux
+    //document.write(NumeroEstrelas)
+    
+
+</script>

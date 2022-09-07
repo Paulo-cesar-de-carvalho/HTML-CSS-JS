@@ -1,0 +1,86 @@
+<head>
+    <meta charset="UTF-8">
+    <br>
+</head>
+<body>
+    <h1>Adivinha segredo II </h1>
+    <h7>Novas funçoes: <br> Push: inclui em uma listagem</h7><br><br>
+    <label for="chute"><input id="chute"></label>
+    <button>Compare com o segredo</button>    
+</body>
+
+<script>
+    function sorteia (){
+        return Math.round((Math.random()+0.05)*10);
+    }
+    //funcao sorteiaNumeros cria uma quantidade de números aleatórios não repetidos de 1 a 10.
+    function sorteiaNumeros(qtde){
+        var segredos = [];
+        var aux = 1;
+        while (aux <= qtde){
+            var achou = false;
+            //criando uma variavel, eu determino o valor sorteado que não se alterá até o fim do primeiro loop
+            var aleatorioAuxiliar = sorteia();
+            //verifica se o número sorteado já está incluído (length se refere ao tamanho do array a cada loop)
+            for (var posicao=0; posicao < segredos.length;posicao++){
+                if(segredos[posicao] == aleatorioAuxiliar){
+                achou = true;
+                //break faz sair do for, porém continua no while
+                break;
+                }
+            }
+            if (achou == false){
+                segredos.push(aleatorioAuxiliar);
+                //o incremento acontece apenas se o valor for diferente e for incluído na listagem
+                aux++;
+            }
+        }
+        return segredos;
+    }
+    
+    var sorteados = sorteiaNumeros (5);
+    //document.write(sorteados);
+
+    var segredo = Math.round((Math.random()+0.05)*10);
+    
+    //segredos.push(Math.round(Math.random))
+    
+    
+    var entrada = document.querySelector("input");
+    entrada.focus();
+
+    
+    function verificavarios (){ 
+        var achou = false
+        for (var posicao = 0; posicao < sorteados.length; posicao++){
+            if (sorteados[posicao]==entrada.value){
+                alert("Você acertou");
+                achou = true;
+                break;
+            }
+        }
+        if (achou == false){
+            alert("Você errou");
+        }
+    }
+    
+    function verifica (){
+        if (entrada.value == segredo){
+            alert ("VOCÊ ACERTOU!!!!!!!!");
+            
+        } else {
+            alert ("VOCÊ ERROU!!!!!!!");
+        }
+        //limpa o input após executar
+        entrada.value = "";
+        //coloca o input em foco
+        entrada.focus();
+    } 
+
+    
+    var botao = document.querySelector("button");
+    //função sem os parenteses é chamada somente quando acionado o botão. Com parênteses, ela executa ao carregar a página
+    botao.onclick = verificavarios;
+
+
+</script>

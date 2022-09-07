@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Array</title>
+
+        <style>
+            h1{
+                text-align: center;
+            }
+            .tabela{
+                border: solid 3px green;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <h1>Array</h1>
+            <p>Criação de tabelas usando array</p>
+            
+        </header>
+        <main>
+            <section>
+                <div>
+                    <p>Qual é o <input type="number" name="" id="dia" > dia da semana? <input type="button" value="Resposta" onclick="encontrar_dia_da_semana()"></p>
+                    <p id="dia-da-semana"></p>
+                </div>
+                <div id="criar-array">
+                    <input type="button" value="Criar Array" id="ciar-array" onclick="criar_array()">
+                    <textarea name="" id="array-resultado" cols="40" rows="10"></textarea>
+                    <table id="tabela-array">texto
+                        <tr>
+                            <td>teste</td>
+                        </tr>
+                    </table>
+                </div>
+                <div></div>
+                 
+            </section>
+
+        </main>
+        <footer>Fim</footer>
+        <script>
+            var diasSemana = ["domingo","segunda","terça","quarta","quinta","sexta","sábado"]
+            var mesesAno = ["janeiro","fevereiro","março","abril","maio","junho","julho","agosto","setembro","outubro","novembor", "dezembro"]
+            var dados = [diasSemana, mesesAno]
+            
+            console.log(mesesAno.indexOf("dezembro")) // localiza o índice do mês procurado
+
+            function encontrar_dia_da_semana(){
+                var txtSemana = document.querySelector("#dia")
+                var txtDia = document.querySelector("#dia-da-semana")
+                var dia = Number (txtSemana.value)
+                txtDia.innerHTML = diasSemana[dia-1]
+            }
+
+            function criar_array(){
+                var tabela = []
+                var linha = []
+                var res = document.querySelector("#array-resultado")
+                var tabelaArray = document.querySelector("#tabela-array")
+                
+                for (altura =0;altura<10;altura++){
+                    linha = []
+                    for (largura = 0;largura <10;largura++){
+                        linha.push(largura + "-" + altura) // push acrescenta um item como último de um array
+                    }
+                    tabela.push(linha)
+                }
+                res.value = tabela
+
+                var tbBody = document.createElement("tbody")
+                for (var y = 0; y<10; y++){
+                    var trArray = document.createElement("tr")
+                    for (var x = 0; x<10;x++){
+                        var tdArray = document.createElement("td")
+                        tdArray.setAttribute("class","tabela")
+                        tdArray.innerText = tabela[x][y]
+                        trArray.appendChild(tdArray)
+                    }
+                    tbBody.appendChild(trArray)
+                }
+                tabelaArray.appendChild(tbBody)
+                
+     
+            }
+
+            
+
+
+            
+        </script>
+    </body>
+</html>
