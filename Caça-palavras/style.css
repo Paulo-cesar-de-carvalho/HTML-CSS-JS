@@ -1,0 +1,20 @@
+*{
+    margin: 0px;
+    border: 0px;
+    padding: 0px;
+}
+#diagrama{
+    border-collapse: collapse;
+    margin: 15px;
+    border: 2px solid blue;
+}
+
+td{
+    border: 1px solid black;
+    width: 13px;
+    height: 13px;
+    font-size: 11px;
+    text-align: center;
+    vertical-align: middle;
+    
+}
