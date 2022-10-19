@@ -21,7 +21,17 @@
         </p>
         <p> <label for="linhas">Escolha a quantidade de linhas:</label>   <input type="number" name="linhas" id="linhas" max="50" min="10" value="36"></p>
         <p><label for="colunas">Escolha a quantidade de colunas:</label>  <input type="number" name="colunas" id="colunas" max="50" min="10" value="25"></p>
-        <p>Escolha o tema</p>
+        
+        
+        <p>
+            <label for="tema">Escolha o tema</label>
+            <select name="tema" id="tema">
+                <option value="">Animais</option>
+                <option value="">Países</option>
+            </select>
+        </p>
+
+        <p><label for="n-palavras">Escolha o número de palavras a serem encontradas:</label>  <input type="number" name="n-palavras" id="n-palavras" max="50" min="10" value="25"></p>
         <p>
             <label for="exibir-palavra">Deseja exibir as palavras?</label>
             <select name="exibir-palavra" id="exibir-palavra">
@@ -29,8 +39,9 @@
                 <option value="">Não</option>
             </select>
         </p>
-        <p>Gerar PDF</p>
-        <P>Imprimir</P>
+        <input type="button" class="btn-novo" id="btn-novo" value="Gerar novo Caça-palavras">
+        <input type="button" class="btn-novo" id="btn-imprimir" value="Imprimir" onclick="window.print()">
+        
     </header>
     <main>
         <section class="palavras">

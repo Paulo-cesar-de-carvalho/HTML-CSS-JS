@@ -36,7 +36,7 @@ function montar_array (numColunas, numLinhas){
     return arrayCompleto
 }
 
-function encaixar_palavra(palavra){
+function encaixar_palavra(palavra,arrayCompleto){
     palavra = palavra.toUpperCase()
     let nLetra = palavra.length
     direcao = aleatorio_entre(0,dificuldade-1)
@@ -251,14 +251,30 @@ function preencher_vazias (arrayComVazias){
 }
 
 
+let btnNovoDiagrama = document.querySelector("#btn-novo")
+btnNovoDiagrama.addEventListener("click",function(){
+    document.querySelector("#diagrama").innerText = ""
+    let arrayCompleto = montar_array(nColunas,nLinhas)
+    
+    let incluidas = 0
+
+    //cada palavra
+    for (palavra of palavrasListadas){ 
+        encaixar_palavra(palavra,arrayCompleto)
+    }
+    preencher_vazias(arrayCompleto)
+    montar_diagrama(arrayCompleto)
+
+    
+})
+
+
 let arrayCompleto = montar_array(nColunas,nLinhas)
 
-let incluidas = 0
-let direcao = 0 
-
 //cada palavra
+let incluidas = 0
 for (palavra of palavrasListadas){ 
-    encaixar_palavra(palavra)
+    encaixar_palavra(palavra,arrayCompleto)
 }
 
 preencher_vazias(arrayCompleto)
@@ -285,3 +301,6 @@ palavrasListadas.sort()
 for (i=0;i<palavrasListadas.length;i++){
     listar_palavras(palavrasListadas[i])
 }
+
+
+
