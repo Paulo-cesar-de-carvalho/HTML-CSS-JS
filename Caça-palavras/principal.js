@@ -1,8 +1,6 @@
 function aleatorio_entre(inf, sup){
     return Math.floor(Math.random()*(sup - inf + 1) + inf)
 }
-
-
 function montar_diagrama(arrayCompleto){
     //Transforma um array em tabela html
     let numLinhas = arrayCompleto.length
@@ -35,8 +33,7 @@ function montar_array (numColunas, numLinhas){
     }
     return arrayCompleto
 }
-
-function encaixar_palavra(palavra,arrayCompleto){
+function encaixar_palavra(palavra,arrayCompleto,dificuldade,incluidas){
     palavra = palavra.toUpperCase()
     let nLetra = palavra.length
     direcao = aleatorio_entre(0,dificuldade-1)
@@ -237,9 +234,9 @@ function encaixar_palavra(palavra,arrayCompleto){
             console.log("nenhum")
     
     }
+    return incluidas
 
 }
-
 function preencher_vazias (arrayComVazias){
     for (i=0; i<arrayComVazias.length;i++){
         for(a=0; a<arrayComVazias[0].length; a++){
@@ -249,33 +246,48 @@ function preencher_vazias (arrayComVazias){
     }
     return arrayComVazias
 }
+function encaixar_todas_palavras(arrayPalavras,arrayCompleto,dificuldade){
+    let incluidas = 0
+    for (palavra of arrayPalavras){ 
+        
+        incluidas = incluidas + encaixar_palavra(palavra,arrayCompleto,dificuldade,0)
+    }
+    return incluidas    
+}
+
 
 
 let btnNovoDiagrama = document.querySelector("#btn-novo")
 btnNovoDiagrama.addEventListener("click",function(){
     document.querySelector("#diagrama").innerText = ""
+    nLinhas = document.querySelector("#linhas").value
+    nColunas = document.querySelector("#colunas").value
+    dificuldade = 2 ** (document.querySelector("#dificuldade").selectedIndex + 1) 
+    
     let arrayCompleto = montar_array(nColunas,nLinhas)
     
-    let incluidas = 0
-
-    //cada palavra
-    for (palavra of palavrasListadas){ 
-        encaixar_palavra(palavra,arrayCompleto)
-    }
-    preencher_vazias(arrayCompleto)
+    let incluidas = encaixar_todas_palavras(palavrasListadas,arrayCompleto,dificuldade)
+    //preencher_vazias(arrayCompleto)
     montar_diagrama(arrayCompleto)
-
+    console.log(incluidas)
     
+})
+
+let selectExibePalavras = document.querySelector ("#exibir-palavra")
+selectExibePalavras.addEventListener("change",function(){
+    if(this.selectedIndex==1){
+        document.querySelector("#palavras").setAttribute("class","invisivel")
+    } else{
+        document.querySelector("#palavras").setAttribute("class","palavras")
+    }
 })
 
 
 let arrayCompleto = montar_array(nColunas,nLinhas)
 
 //cada palavra
-let incluidas = 0
-for (palavra of palavrasListadas){ 
-    encaixar_palavra(palavra,arrayCompleto)
-}
+
+let incluidas = encaixar_todas_palavras(palavrasListadas,arrayCompleto,dificuldade)
 
 preencher_vazias(arrayCompleto)
 
