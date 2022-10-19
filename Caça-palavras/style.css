@@ -3,6 +3,10 @@
     border: 0px;
     padding: 0px;
 }
+body{
+    background-color: beige;
+}
+
 #diagrama{
     border-collapse: collapse;
     margin: 15px;
@@ -10,11 +14,16 @@
 }
 
 td{
-    border: 1px solid black;
+    
     width: 13px;
     height: 13px;
     font-size: 11px;
     text-align: center;
     vertical-align: middle;
     
+}
+
+main{
+    display: flex;
+    flex-wrap: wrap;
 }
