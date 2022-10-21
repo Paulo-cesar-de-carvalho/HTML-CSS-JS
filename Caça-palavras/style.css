@@ -59,6 +59,10 @@ td{
     vertical-align: middle;
     
 }
+.tdPreenchida{
+    background-color: aquamarine;
+
+}
 
 .invisivel{
     display: none;

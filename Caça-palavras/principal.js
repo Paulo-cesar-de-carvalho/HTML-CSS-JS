@@ -314,7 +314,7 @@ selectExibePalavras.addEventListener("change",function(){
 let arrayCompleto = montar_array(nColunas,nLinhas)
 palavrasListadas = escolher_palavras(nPalavras,paises)
 let incluidas = encaixar_todas_palavras(palavrasListadas,arrayCompleto,dificuldade)
-preencher_vazias(arrayCompleto)
+//preencher_vazias(arrayCompleto)
 console.log(incluidas)
 montar_diagrama(arrayCompleto)
 lsitar_todas_palavras(palavrasListadas)
@@ -323,6 +323,17 @@ lsitar_todas_palavras(palavrasListadas)
 
 //let teste = [1,2,"testes",4,5,"testes"]
 //console.log(teste.indexOf("teste"))
+
+todosTds = document.querySelectorAll("td")
+for (td of todosTds){
+    if (td.innerText != ""){
+        td.setAttribute("class","tdPreenchida")
+        td.setAttribute("id","tdPreenchida")
+    }else{
+        td.innerText = letras[aleatorio_entre(0,letras.length-1)]
+
+    }
+}
 
 
 
