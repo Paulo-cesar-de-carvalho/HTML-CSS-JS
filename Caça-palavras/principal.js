@@ -254,25 +254,53 @@ function encaixar_todas_palavras(arrayPalavras,arrayCompleto,dificuldade){
     }
     return incluidas    
 }
+function escolher_palavras (quantidade, base){
+    let baseVolatil = base
+    let arrayEscolhidos = []
+    let sorteado
+    for (i=0;i<quantidade;i++){
+        sorteado = aleatorio_entre(0,base.length-1)
+        arrayEscolhidos.push (baseVolatil[sorteado])
+        baseVolatil.splice(sorteado,1)
+    }
+    return arrayEscolhidos.sort()
+}
+function listar_palavras (palavra, ancora){
+    let liPalavra = document.createElement("li")
+    liPalavra.innerText = palavra
+    ancora.appendChild(liPalavra)
+}
+function lsitar_todas_palavras (arrayPalavras){
+    let listaPalavras = document.querySelector("#palavras")
+    listaPalavras.innerText = ""
+    arrayPalavras.sort()
+    for (i=0;i<arrayPalavras.length;i++){
+        listar_palavras(arrayPalavras[i], listaPalavras)
+    }
+}
 
 
-
+//incluir novo diagrama:
 let btnNovoDiagrama = document.querySelector("#btn-novo")
 btnNovoDiagrama.addEventListener("click",function(){
     document.querySelector("#diagrama").innerText = ""
     nLinhas = document.querySelector("#linhas").value
     nColunas = document.querySelector("#colunas").value
     dificuldade = 2 ** (document.querySelector("#dificuldade").selectedIndex + 1) 
+    nPalavras = document.getElementById("n-palavras").value
+    tema = document.querySelector("#tema").selectedIndex
     
     let arrayCompleto = montar_array(nColunas,nLinhas)
-    
+    palavrasListadas = escolher_palavras( nPalavras,todasPalavras[tema])
     let incluidas = encaixar_todas_palavras(palavrasListadas,arrayCompleto,dificuldade)
-    //preencher_vazias(arrayCompleto)
+    preencher_vazias(arrayCompleto)
     montar_diagrama(arrayCompleto)
     console.log(incluidas)
+    lsitar_todas_palavras(palavrasListadas)
     
 })
 
+//alterna entre exibir as palavras e ocultar
 let selectExibePalavras = document.querySelector ("#exibir-palavra")
 selectExibePalavras.addEventListener("change",function(){
     if(this.selectedIndex==1){
@@ -282,37 +310,25 @@ selectExibePalavras.addEventListener("change",function(){
     }
 })
 
-
+//comandos ao logar:
 let arrayCompleto = montar_array(nColunas,nLinhas)
-
-//cada palavra
-
+palavrasListadas = escolher_palavras(nPalavras,paises)
 let incluidas = encaixar_todas_palavras(palavrasListadas,arrayCompleto,dificuldade)
-
 preencher_vazias(arrayCompleto)
-
-//console.log(arrayCompleto)
 console.log(incluidas)
 montar_diagrama(arrayCompleto)
+lsitar_todas_palavras(palavrasListadas)
+//console.log (escolher_palavras(25,paises))
 
-// console.log(linhaInicialPalavra+1,colunaInicialPalavra+1)
 
-// for(i = 0; i<100;i++){
-//     console.log(aleatorio_entre(65,90))
-// }
+//let teste = [1,2,"testes",4,5,"testes"]
+//console.log(teste.indexOf("teste"))
 
-let listaPalavras = document.querySelector("#palavras")
 
-function listar_palavras (palavra){
-    let liPalavra = document.createElement("li")
-    liPalavra.innerText = palavra
-    listaPalavras.appendChild(liPalavra)
-}
 
-palavrasListadas.sort()
-for (i=0;i<palavrasListadas.length;i++){
-    listar_palavras(palavrasListadas[i])
-}
+
+
+
 
 
 
