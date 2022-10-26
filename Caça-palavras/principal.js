@@ -335,11 +335,9 @@ for (td of todosTds){
     }
 }
 
+let f = x => 2**x
+    
 
-
-
-
-
-
+console.log(f(11))
 
 

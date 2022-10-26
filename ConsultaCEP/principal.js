@@ -21,7 +21,6 @@ btnConsultar.addEventListener("click",function(){
 })
 
 
-
 capturarCEP(37550052)
 
 
