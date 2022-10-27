@@ -278,7 +278,25 @@ function lsitar_todas_palavras (arrayPalavras){
         listar_palavras(arrayPalavras[i], listaPalavras)
     }
 }
+function preencher_vazias_com_configuracao (){
+    todosTds = document.querySelectorAll("td")
+    for (td of todosTds){
+        if (td.innerText != ""){
+           // td.setAttribute("class","tdPreenchida")
+            td.setAttribute("id","tdPreenchida")
+        }else{
+            td.innerText = letras[aleatorio_entre(0,letras.length-1)]
 
+        }
+    }
+    let letrasPreenchidas = document.querySelectorAll("#tdPreenchida")
+    for (cadaLetra of letrasPreenchidas){
+        cadaLetra.addEventListener("click", function(){
+            this.setAttribute("class", "tdPreenchida")
+            console.log("contagem")
+        })
+    }
+}
 
 //incluir novo diagrama:
 let btnNovoDiagrama = document.querySelector("#btn-novo")
@@ -293,10 +311,11 @@ btnNovoDiagrama.addEventListener("click",function(){
     let arrayCompleto = montar_array(nColunas,nLinhas)
     palavrasListadas = escolher_palavras( nPalavras,todasPalavras[tema])
     let incluidas = encaixar_todas_palavras(palavrasListadas,arrayCompleto,dificuldade)
-    preencher_vazias(arrayCompleto)
+    //preencher_vazias(arrayCompleto)
     montar_diagrama(arrayCompleto)
     console.log(incluidas)
     lsitar_todas_palavras(palavrasListadas)
+    preencher_vazias_com_configuracao()
     
 })
 
@@ -318,26 +337,15 @@ let incluidas = encaixar_todas_palavras(palavrasListadas,arrayCompleto,dificulda
 console.log(incluidas)
 montar_diagrama(arrayCompleto)
 lsitar_todas_palavras(palavrasListadas)
-//console.log (escolher_palavras(25,paises))
+preencher_vazias_com_configuracao ()
+
+
 
 
 //let teste = [1,2,"testes",4,5,"testes"]
 //console.log(teste.indexOf("teste"))
 
-todosTds = document.querySelectorAll("td")
-for (td of todosTds){
-    if (td.innerText != ""){
-        td.setAttribute("class","tdPreenchida")
-        td.setAttribute("id","tdPreenchida")
-    }else{
-        td.innerText = letras[aleatorio_entre(0,letras.length-1)]
 
-    }
-}
 
-let f = x => 2**x
-    
-
-console.log(f(11))
 
 

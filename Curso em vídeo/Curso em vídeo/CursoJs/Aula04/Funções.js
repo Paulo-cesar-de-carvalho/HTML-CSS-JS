@@ -16,7 +16,10 @@ let f = function(x){ // atribuir uma função a uma variável
     return 2**x
 }
 
+let g = x => 2**x
+
 console.log (f(10)) // chamada da variável com função de função
+console.log (g(10)) 
 
 function calcular_fatorial (num){
     var acumulado = 1
