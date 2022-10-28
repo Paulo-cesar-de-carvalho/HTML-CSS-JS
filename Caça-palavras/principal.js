@@ -279,21 +279,37 @@ function lsitar_todas_palavras (arrayPalavras){
     }
 }
 function preencher_vazias_com_configuracao (){
+    contagemAcerto = 0
+    contagemErro = 0
     todosTds = document.querySelectorAll("td")
+    let campoQteErros = document.querySelector("#quantidade-erros")
+    let campoPercentual = document.querySelector("#percentual-concluído")
     for (td of todosTds){
         if (td.innerText != ""){
            // td.setAttribute("class","tdPreenchida")
             td.setAttribute("id","tdPreenchida")
         }else{
             td.innerText = letras[aleatorio_entre(0,letras.length-1)]
+            td.setAttribute("id","tdErro")
 
         }
     }
     let letrasPreenchidas = document.querySelectorAll("#tdPreenchida")
+    let totalLetras = letrasPreenchidas.length
     for (cadaLetra of letrasPreenchidas){
         cadaLetra.addEventListener("click", function(){
             this.setAttribute("class", "tdPreenchida")
-            console.log("contagem")
+            contagemAcerto ++
+            campoPercentual.innerText =`${contagemAcerto} de ${totalLetras}`
+            this.setAttribute("id", "nenhum")
+        })
+    }
+    let letrasErradas = document.querySelectorAll("#tdErro")
+    for (cadaLetra of letrasErradas){
+        cadaLetra.addEventListener("click", function(){
+            this.setAttribute("class", "tdErro")
+            contagemErro ++
+            campoQteErros.innerText = (`${contagemErro}`)
         })
     }
 }

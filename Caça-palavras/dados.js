@@ -16,4 +16,5 @@ let nLinhas = 36
 let tentativas = 50
 let dificuldade = 8
 let nPalavras = 30
-
+let contagemErro = 0
+let contagemAcerto = 0
