@@ -9,6 +9,7 @@ const elementosQuimicos = ['Hidrogênio','Hélio','Lítio','Berílio','Boro','Ca
 const paises = ['Afeganistão','Albânia','Alemanha','Andorra','Angola','Argélia','Argentina','Armênia','Austrália','Áustria','Azerbaijão','Bahamas','Bangladesh','Barbados','Barein','Bélgica','Belize','Benin','Bielorrússia','Bolívia','Botsuana','Brasil','Brunei','Bulgária','Burundi','Butão','Camarões','Camboja','Canadá','Catar','Cazaquistão','Chade','Chile','China','Chipre','Cingapura','Colômbia','Comores','Congo','Croácia','Cuba','Dinamarca','Djibuti','Dominica','Egito','Equador','Eritreia','Eslováquia','Eslovênia','Espanha','Estônia','Etiópia','Fiji','Filipinas','Finlândia','França','Gabão','Gâmbia','Gana','Geórgia','Granada','Grécia','Guatemala','Guiana','Guiné','Guiné-Bissau','Guiné-Equatorial','Haiti','Holanda','Honduras','Hungria','Iêmen','Índia','Indonésia','Irã','Iraque','Irlanda','Islândia','Israel','Itália','Jamaica','Japão','Jordânia','Kiribati','Kuweit','Laos','Lesoto','Letônia','Líbano','Libéria','Líbia','Liechtenstein','Lituânia','Luxemburgo','Macedônia','Madagascar','Malásia','Malavi','Maldivas','Mali','Malta','Marrocos','Maurício','Mauritânia','México','Mianmar','Micronésia','Moçambique','Moldávia','Mônaco','Mongólia','Montenegro','Namíbia','Nauru','Nepal','Nicarágua','Níger','Nigéria','Noruega','Omã','Palau','Panamá','Paquistão','Paraguai','Peru','Polônia','Portugal','Quênia','Quirguistão','Romênia','Ruanda','Rússia','Senegal','Sérvia','Seychelles','Síria','Somália','Suazilândia','Sudão','Suécia','Suíça','Suriname','Tadjiquistão','Tailândia','Tanzânia','Taywan','Togo','Tonga','Tunísia','Turcomenistão','Turquia','Tuvalu','Ucrânia','Uganda','Uruguai','Uzbequistão','Vanuatu','Vaticano','Venezuela','Vietnã','Zâmbia','Zimbábue']
 
 const todasPalavras = [paises , elementosQuimicos]
+const todosTemas = ["Países", "ElementosQuímicos", "Animais", "Frutas", "Carros", "Cidades Brasileiras", "Cidades Estrangeiras"]
 
 
 let nColunas = 25
@@ -22,3 +23,4 @@ let momentoInicial = 0
 let momentoFinal = 0
 let podeJogar = true
 let limiteErros = 10
+let campoStatusJogo = document.getElementById("status-jogo")

@@ -36,37 +36,33 @@
         </p>
 
         <p>
-            <label for="n-palavras">Escolha o número de palavras a serem encontradas:</label>
+            <label for="n-palavras">Escolha a quantidade de palavras:</label>
             <input type="number" name="n-palavras" id="n-palavras" max="50" min="10" value="25">
-            <span id="palavras-não-encaixadas"></span>
+            <span id="palavras-não-encaixadas" class="atencao"></span>
         </p>
         <div>
-            <input type="button" class="btn-novo" id="btn-novo" value="Gerar novo Caça-palavras">
+            <input type="button" class="btn-novo" id="btn-novo" value="Gerar novo">
             <input type="button" class="btn-novo" id="btn-imprimir" value="Imprimir" onclick="window.print()">
             <input type="button" class="btn-novo" id="btn-resposta" value="Resposta" onclick="resposta()">
         </div>
-        
-        <p> Quantidade de erros: 
-            <span id="quantidade-erros"></span>
-            <span id="game-over"></span>
-        </p>
-        <p id="vitoria">Percentual concluído:
-            <span id="percentual-concluído"></span>
-        </p>
-        
+       
     </header>
     <main>
         
-        <section class="palavras">
-            <ul id="palavras">
-
-            </ul>
-            
+        <section class="cabecalho-fixo"> 
+            <div class="palavras">
+                <ul id="palavras"></ul>
+            </div>
+            <strong>Quantidade de erros: </strong> 
+            <span id="quantidade-erros"></span>
+            <strong>Percentual concluído: </strong>
+            <span id="percentual-concluído"></span>
+            <span id="vitoria"></span>
+            <p id="status-jogo"> </p>
         </section>
-        <section class="diagrama" id="">
-            <table id="diagrama">
 
-            </table>
+        <section class="diagrama-conteiner" id="">
+            <table id="diagrama"> </table>
         </section>
 
     </main>

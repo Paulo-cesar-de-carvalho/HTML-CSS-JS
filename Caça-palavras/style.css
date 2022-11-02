@@ -7,7 +7,7 @@
 
 body{
     background-color: beige;
-    width: 96%;
+    width: 98%;
     margin: auto;
     max-width: 800px;
     border: solid black;
@@ -15,7 +15,7 @@ body{
 }
 
 header>p{
-    margin: 15px 0px;
+    margin: 10px 0px;
     height: 20px;
 }
 h1{
@@ -28,13 +28,13 @@ input, select{
 }
 .palavras>ul{
     padding: 5px 30px;
-    width: 100%;
+    width: 90%;
     display: flex;
     flex-wrap: wrap;
     gap: 10px 30px;
     
 }
-.palavras>ul>li:hover, .palavra-encontrada{
+.palavra-encontrada{
     
     text-decoration: line-through;
     color: lightgray;
@@ -43,7 +43,7 @@ input, select{
 .btn-novo{
     margin: 15px 30px;
     height: 48px;
-    width: 180px;
+    width: 110px;
     font-size: 12px;
     background-color: red;
     font-weight: bolder;
@@ -55,9 +55,17 @@ input, select{
 }
 
 main{
+    width: 95%;
+    position: relative;
     border: 1px solid black;
-    display: flex;
-    flex-wrap: wrap;
+}
+.cabecalho-fixo{
+    background-color: beige;
+    position: sticky;
+    top: 0px;
+}
+.diagrama-conteiner{
+    overflow-x: auto;
 }
 
 #diagrama{
@@ -90,3 +98,15 @@ td{
     display: none;
 }
 
+.atencao{
+    color: red;
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.mensagem-vitoria{
+    color: green;
+    font-weight: bold;
+    text-decoration: underline;
+}

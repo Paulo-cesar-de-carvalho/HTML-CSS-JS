@@ -336,13 +336,40 @@ function montar_pagina_completa (nColunas,nLinhas,nPalavras,base,dificuldade){
     let arrayCompleto = montar_array(nColunas,nLinhas)
     palavrasListadas = escolher_palavras(nPalavras,base)
     let incluidas = encaixar_todas_palavras(palavrasListadas,arrayCompleto,dificuldade)
-    console.log(incluidas)
+    if (!(nPalavras==incluidas)){
+        document.getElementById("palavras-não-encaixadas").innerText = `A t e n ç ã o!!! ${nPalavras-incluidas} das palavras listadas não puderam ser encaixadas!!!`
+    }else{
+        document.getElementById("palavras-não-encaixadas").innerText = ""
+    }
+    campoStatusJogo.innerText = ""
+    
     montar_diagrama(arrayCompleto)
     listar_todas_palavras(palavrasListadas)
     preencher_vazias_com_configuracao ()
     momentoInicial = (new Date()).getTime()
 }
-
+function game_over(qteErros){
+    if (qteErros > limiteErros){
+        podeJogar = false
+        campoStatusJogo.innerHTML = "<strong>Que Pena!! Você perdeu</strong>"
+        campoStatusJogo.setAttribute("class", "atencao")
+    }
+}
+function vitoria (acertos, totalLetras){
+    if (acertos>=totalLetras){
+        momentoFinal = (new Date()).getTime()
+        campoStatusJogo.innerText = `Parabens!!! Você encontrou todas as palavras em ${((momentoFinal-momentoInicial)/1000).toFixed(2)} segundos`
+        campoStatusJogo.setAttribute("class", "mensagem-vitoria")
+        podeJogar = false
+    }        
+}
+function resposta(){
+    let letrasCorretas = document.querySelectorAll("#tdPreenchida")
+    for (tdLetra of letrasCorretas){
+        tdLetra.setAttribute("class", "tdPreenchida")
+    }
+    game_over(limiteErros + 1)
+}
 montar_pagina_completa(nColunas,nLinhas,nPalavras,paises,dificuldade)
 
 //incluir novo diagrama:
@@ -361,33 +388,12 @@ btnNovoDiagrama.addEventListener("click",function(){
 
 
 
-//fixar tabela
-// contar tempo
-// interromper com tantos erros
-// mensagem de vitória
-// botão resposta
-function game_over(qteErros){
-    if (qteErros > limiteErros){
-        podeJogar = false
-        console.log ("Que Pena!! Você perdeu")
-    }
-}
 
-function vitoria (acertos, totalLetras){
-    if (acertos>=totalLetras){
-        momentoFinal = (new Date()).getTime()
-        document.querySelector("#vitoria").innerText = `Parabens!!! Você encontrou todas as palavras em ${((momentoFinal-momentoInicial)/1000).toFixed(2)} segundos`
-        podeJogar = false
-    }
-        
-}
+// contar tempo (transformar em minutos)
+// incluir mais listagens (animais, frutas, carro, cidadesBrasileira, CidadesEstrangeiras)
+// fazer option dinâmico
+// responsividade
 
-function resposta(){
-    let letrasCorretas = document.querySelectorAll("#tdPreenchida")
-    for (tdLetra of letrasCorretas){
-        tdLetra.setAttribute("class", "tdPreenchida")
-    }
-    game_over(limiteErros+1)
-}
+
 
 
