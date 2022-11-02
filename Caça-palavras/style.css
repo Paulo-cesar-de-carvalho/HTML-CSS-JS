@@ -34,12 +34,11 @@ input, select{
     gap: 10px 30px;
     
 }
-.palavras>ul>li:active{
+.palavras>ul>li:hover, .palavra-encontrada{
     
     text-decoration: line-through;
     color: lightgray;
 }
-
 
 .btn-novo{
     margin: 15px 30px;
@@ -83,7 +82,8 @@ td{
 }
 .tdErro{
     background-color: brown;
-    color: brown
+    color: rgb(82, 79, 79)
+
 }
 
 .invisivel{

@@ -237,15 +237,6 @@ function encaixar_palavra(palavra,arrayCompleto,dificuldade,incluidas){
     return incluidas
 
 }
-function preencher_vazias (arrayComVazias){
-    for (i=0; i<arrayComVazias.length;i++){
-        for(a=0; a<arrayComVazias[0].length; a++){
-            if (arrayComVazias[i][a] == "")
-            arrayComVazias[i][a] = letras[aleatorio_entre(0,25)]
-        }
-    }
-    return arrayComVazias
-}
 function encaixar_todas_palavras(arrayPalavras,arrayCompleto,dificuldade){
     let incluidas = 0
     for (palavra of arrayPalavras){ 
@@ -265,17 +256,28 @@ function escolher_palavras (quantidade, base){
     }
     return arrayEscolhidos.sort()
 }
-function listar_palavras (palavra, ancora){
+function listar_cada_palavra (palavra, ancora){
     let liPalavra = document.createElement("li")
     liPalavra.innerText = palavra
+    let clicado = false
+    liPalavra.addEventListener("click", function(){
+        if (!clicado){
+            this.setAttribute("class","palavra-encontrada")
+            clicado = true
+        }else{
+            this.removeAttribute("class", "palavra-encontradaa")
+            clicado = false
+        }
+        
+    })
     ancora.appendChild(liPalavra)
 }
-function lsitar_todas_palavras (arrayPalavras){
+function listar_todas_palavras (arrayPalavras){
     let listaPalavras = document.querySelector("#palavras")
     listaPalavras.innerText = ""
     arrayPalavras.sort()
     for (i=0;i<arrayPalavras.length;i++){
-        listar_palavras(arrayPalavras[i], listaPalavras)
+        listar_cada_palavra(arrayPalavras[i], listaPalavras)
     }
 }
 function preencher_vazias_com_configuracao (){
@@ -284,9 +286,12 @@ function preencher_vazias_com_configuracao (){
     todosTds = document.querySelectorAll("td")
     let campoQteErros = document.querySelector("#quantidade-erros")
     let campoPercentual = document.querySelector("#percentual-concluído")
+    campoQteErros.innerText = 0
+    campoPercentual.innerText = 0
+
+    //inclusao de classe e id e também preenchimento das letras nos espaços vazios
     for (td of todosTds){
-        if (td.innerText != ""){
-           // td.setAttribute("class","tdPreenchida")
+        if (td.innerText != "" ){
             td.setAttribute("id","tdPreenchida")
         }else{
             td.innerText = letras[aleatorio_entre(0,letras.length-1)]
@@ -294,25 +299,51 @@ function preencher_vazias_com_configuracao (){
 
         }
     }
+    //ao clicar em uma letra correta:
     let letrasPreenchidas = document.querySelectorAll("#tdPreenchida")
     let totalLetras = letrasPreenchidas.length
     for (cadaLetra of letrasPreenchidas){
+        let clicadoCorreto = false
         cadaLetra.addEventListener("click", function(){
-            this.setAttribute("class", "tdPreenchida")
-            contagemAcerto ++
-            campoPercentual.innerText =`${contagemAcerto} de ${totalLetras}`
-            this.setAttribute("id", "nenhum")
+            if (!clicadoCorreto && podeJogar){
+                this.setAttribute("class", "tdPreenchida")
+                contagemAcerto ++
+                campoPercentual.innerText =`${contagemAcerto} de ${totalLetras} ( ${(contagemAcerto/totalLetras*100).toFixed(2)}%)`
+                clicadoCorreto = true
+                vitoria(contagemAcerto,totalLetras)
+            }
+            
+            //this.setAttribute("id", "nenhum")
         })
     }
+    //ao clicar em uma letra incorreta:
     let letrasErradas = document.querySelectorAll("#tdErro")
     for (cadaLetra of letrasErradas){
+        let clicadoIncorreto = false
         cadaLetra.addEventListener("click", function(){
-            this.setAttribute("class", "tdErro")
-            contagemErro ++
-            campoQteErros.innerText = (`${contagemErro}`)
+            if(!clicadoIncorreto && podeJogar){
+                this.setAttribute("class", "tdErro")
+                contagemErro ++
+                campoQteErros.innerText = (`${contagemErro}`)
+                clicadoIncorreto = true
+                game_over(contagemErro)
+            }
+            
         })
     }
 }
+function montar_pagina_completa (nColunas,nLinhas,nPalavras,base,dificuldade){
+    let arrayCompleto = montar_array(nColunas,nLinhas)
+    palavrasListadas = escolher_palavras(nPalavras,base)
+    let incluidas = encaixar_todas_palavras(palavrasListadas,arrayCompleto,dificuldade)
+    console.log(incluidas)
+    montar_diagrama(arrayCompleto)
+    listar_todas_palavras(palavrasListadas)
+    preencher_vazias_com_configuracao ()
+    momentoInicial = (new Date()).getTime()
+}
+
+montar_pagina_completa(nColunas,nLinhas,nPalavras,paises,dificuldade)
 
 //incluir novo diagrama:
 let btnNovoDiagrama = document.querySelector("#btn-novo")
@@ -323,45 +354,40 @@ btnNovoDiagrama.addEventListener("click",function(){
     dificuldade = 2 ** (document.querySelector("#dificuldade").selectedIndex + 1) 
     nPalavras = document.getElementById("n-palavras").value
     tema = document.querySelector("#tema").selectedIndex
-    
-    let arrayCompleto = montar_array(nColunas,nLinhas)
-    palavrasListadas = escolher_palavras( nPalavras,todasPalavras[tema])
-    let incluidas = encaixar_todas_palavras(palavrasListadas,arrayCompleto,dificuldade)
-    //preencher_vazias(arrayCompleto)
-    montar_diagrama(arrayCompleto)
-    console.log(incluidas)
-    lsitar_todas_palavras(palavrasListadas)
-    preencher_vazias_com_configuracao()
+    podeJogar = true
+    montar_pagina_completa(nColunas,nLinhas,nPalavras,todasPalavras[tema],dificuldade)
     
 })
 
-//alterna entre exibir as palavras e ocultar
-let selectExibePalavras = document.querySelector ("#exibir-palavra")
-selectExibePalavras.addEventListener("change",function(){
-    if(this.selectedIndex==1){
-        document.querySelector("#palavras").setAttribute("class","invisivel")
-    } else{
-        document.querySelector("#palavras").setAttribute("class","palavras")
+
+
+//fixar tabela
+// contar tempo
+// interromper com tantos erros
+// mensagem de vitória
+// botão resposta
+function game_over(qteErros){
+    if (qteErros > limiteErros){
+        podeJogar = false
+        console.log ("Que Pena!! Você perdeu")
     }
-})
+}
 
-//comandos ao logar:
-let arrayCompleto = montar_array(nColunas,nLinhas)
-palavrasListadas = escolher_palavras(nPalavras,paises)
-let incluidas = encaixar_todas_palavras(palavrasListadas,arrayCompleto,dificuldade)
-//preencher_vazias(arrayCompleto)
-console.log(incluidas)
-montar_diagrama(arrayCompleto)
-lsitar_todas_palavras(palavrasListadas)
-preencher_vazias_com_configuracao ()
+function vitoria (acertos, totalLetras){
+    if (acertos>=totalLetras){
+        momentoFinal = (new Date()).getTime()
+        document.querySelector("#vitoria").innerText = `Parabens!!! Você encontrou todas as palavras em ${((momentoFinal-momentoInicial)/1000).toFixed(2)} segundos`
+        podeJogar = false
+    }
+        
+}
 
-
-
-
-//let teste = [1,2,"testes",4,5,"testes"]
-//console.log(teste.indexOf("teste"))
-
-
-
+function resposta(){
+    let letrasCorretas = document.querySelectorAll("#tdPreenchida")
+    for (tdLetra of letrasCorretas){
+        tdLetra.setAttribute("class", "tdPreenchida")
+    }
+    game_over(limiteErros+1)
+}
 
 
