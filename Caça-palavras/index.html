@@ -30,8 +30,7 @@
         <p>
             <label for="tema">Escolha o tema</label>
             <select name="tema" id="tema">
-                <option value="" selected>Países</option>
-                <option value="">Elementos Químicos</option>
+                <option value="" selected></option>
             </select>
         </p>
 
@@ -53,12 +52,18 @@
             <div class="palavras">
                 <ul id="palavras"></ul>
             </div>
-            <strong>Quantidade de erros: </strong> 
-            <span id="quantidade-erros"></span>
-            <strong>Percentual concluído: </strong>
-            <span id="percentual-concluído"></span>
-            <span id="vitoria"></span>
-            <p id="status-jogo"> </p>
+            <div class="painel-resultado">
+                <p>Quantidade de erros: 
+                    <strong><span id="quantidade-erros"></span></strong>
+                </p>
+                
+                <p> Percentual concluído: 
+                    <strong><span id="percentual-concluído"></span></strong>
+                </p>
+                <p id="status-jogo"> </p>
+            </div>
+            
+            
         </section>
 
         <section class="diagrama-conteiner" id="">

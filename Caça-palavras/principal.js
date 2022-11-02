@@ -370,7 +370,7 @@ function resposta(){
     }
     game_over(limiteErros + 1)
 }
-montar_pagina_completa(nColunas,nLinhas,nPalavras,paises,dificuldade)
+montar_pagina_completa(nColunas,nLinhas,nPalavras,todasPalavras[aleatorio_entre(0,todasPalavras.length-1)],dificuldade)
 
 //incluir novo diagrama:
 let btnNovoDiagrama = document.querySelector("#btn-novo")
@@ -380,19 +380,14 @@ btnNovoDiagrama.addEventListener("click",function(){
     nColunas = document.querySelector("#colunas").value
     dificuldade = 2 ** (document.querySelector("#dificuldade").selectedIndex + 1) 
     nPalavras = document.getElementById("n-palavras").value
-    tema = document.querySelector("#tema").selectedIndex
+    tema = document.querySelector("#tema").selectedIndex - 1
     podeJogar = true
     montar_pagina_completa(nColunas,nLinhas,nPalavras,todasPalavras[tema],dificuldade)
     
 })
 
-
-
-
 // contar tempo (transformar em minutos)
-// incluir mais listagens (animais, frutas, carro, cidadesBrasileira, CidadesEstrangeiras)
-// fazer option dinâmico
-// responsividade
+
 
 
 
