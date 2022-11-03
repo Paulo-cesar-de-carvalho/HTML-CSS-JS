@@ -26,11 +26,8 @@ const cidadesEstrangeiras = ['Shanghai','Bombay','Istanbul','Manila','Moscow','D
     'Jabalpur','Changwŏn','Sofia','Shubra-El-Khema','Kananga','Suwŏn','Ulsan','Rostov-na-Donu','Niamey','Campinas','Yongin','Belgrade','Huaibei','Dublin','Adelaide','Visakhapatnam','Jodhpur','Qiqihar','Warri','Salem','Sendai','Bhubaneswar','Zhangjiakou','Bogor','Onitsha','Kathmandu','Cologne','Wenzhou','Volgograd','Krasnoyarsk','Voronezh','Edmonton','Bişkek','Mombasa','Sharjah','Chandīgarh','Akure','Maceió','Arequipa','Chiba','Gwalior','Donetsk','Odesa','Kisangani','Kitakyūshū','Sŏngnam','Bhiwandi','Hubli','Cartagena','Ottawa','Marrakech','Jalandhar','Puyang',
     'Koyang','Konya','Madurai','Mendoza','Yantai','an-Najaf','Qinhuangdao','Alīgarh','Foshan','Birmingham','Naples','Denpasar','Managua','Raipur','Trujillo','Hamamatsu','Xining','Pietermaritzburg','Pingdingshan','Xingtai','Hegang','Ulaanbaatar','Nouakchott']
 
-
-
 const todasPalavras = [animais, frutas,  carros,  cidadesBrasileiras,  cidadesEstrangeiras,elementosQuimicos, paises]
 const todosTemas = [ "Animais", "Frutas", "Carros", "Cidades Brasileiras", "Cidades Estrangeiras", "ElementosQuímicos", "Países"]
-
 
 let nColunas = 25
 let nLinhas = 36

@@ -387,8 +387,6 @@ btnNovoDiagrama.addEventListener("click",function(){
 })
 
 // contar tempo (transformar em minutos)
-
-
-
-
+// configurar versão para impresão
+// colocar simbolo página inicial
 
