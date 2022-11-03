@@ -1,0 +1,26 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+}
+
+body{
+    background-color: black;
+}
+
+.itens{
+    text-align: center;
+    background-color: beige;
+    width: 50%;
+    height: 50vh;
+    margin: 25% auto;
+}
+ul{
+    display: flex;
+    flex-flow: column wrap;
+    
+}
+
+li{
+    margin: 15px 0px;
+}
