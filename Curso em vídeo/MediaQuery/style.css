@@ -1,0 +1,47 @@
+*{
+    padding: 0px;
+    border: 0px;
+    margin: 0px;
+    list-style-type: none;
+}
+
+body{
+    width: 98vw;
+    max-width: 720px;
+    margin: auto;
+    font-family: sans-serif;
+}
+h1{
+    text-align: center;
+    text-decoration: underline;
+    margin: 15px 0px;
+}
+
+
+menu>ul{
+    display: block;
+    margin: 10px auto;
+    text-align: center;
+    list-style-type: circle;
+    background-color: aquamarine;
+}
+
+
+menu>ul>li{
+    padding: 10px;
+    
+
+}
+
+menu>ul>li:hover{
+    background-color: greenyellow;
+}
+
+main>section>p{
+    text-align: justify;
+}
+
+#lista-css>ul>li{
+    list-style-type: square;
+    list-style-position: inside;
+}

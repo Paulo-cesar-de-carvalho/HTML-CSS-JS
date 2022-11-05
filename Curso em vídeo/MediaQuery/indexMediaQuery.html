@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Query</title>
+    <link rel="stylesheet" href="style.css" media = "all">
+    <link rel="stylesheet" href="styleImpressao.css" media="print">
+    <link rel="stylesheet" href="styleRetrato.css" media= "screen and (orientation: landscape)">
+    
+
+
+</head>
+<!-- resize: funçaõ de alteração do tamanho da tela -->
+<body onresize="verificarTamanhoTela()">
+    <header>
+        <h1>Media Query e responsividade</h1>
+        <menu>
+            <ul>
+                <li><a href="@">opção1</a></li>
+                <li><a href="@">opção2</a></li>
+                <li><a href="@">opção3</a></li>
+                <li><a href="@">opção4</a></li>
+                <li><a href="@">opção4</a></li>
+            </ul>
+        </menu>
+    </header>
+    <main>
+        <section>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sint natus iure voluptate, provident esse odio dolores accusantium, maxime adipisci hic molestias ullam ipsa fugiat est animi aut laudantium necessitatibus beatae?
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Corrupti obcaecati velit, facilis impedit tenetur officia quisquam! Esse voluptas debitis vero natus reiciendis voluptates, nesciunt amet distinctio ratione expedita, tempore autem?  
+            </p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae tenetur dignissimos necessitatibus suscipit totam blanditiis recusandae ut, exercitationem, vel dicta fuga sequi. Cumque porro rem voluptatibus tempore ex, totam obcaecati!</p>
+        </section>
+        <article id="lista-css">
+
+            <ul>
+                <li>css para impressão: link rel="stylesheet" href="styleImpressao.css" media="print"</li>
+                <li>css para telas: link rel="stylesheet" href="styleImpressao.css" media="screen"</li>
+            </ul>
+            <p></p>
+        </article>
+
+    </main>
+
+    <script>
+        function verificarTamanhoTela(){
+            //console.log("alterou")
+            //console.log(window.screen.width)
+        }
+    </script>
+</body>
+</html>

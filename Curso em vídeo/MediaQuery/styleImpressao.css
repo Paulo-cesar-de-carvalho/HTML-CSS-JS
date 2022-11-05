@@ -1,0 +1,21 @@
+/*Versão para imopressão:*/
+
+menu{display: none;}
+
+html,body{
+    font-family: 'Courier New', Courier, monospace;
+}
+
+body{
+    width: 96%;
+    max-width: 100%;
+}
+
+article::after{
+    content: "Impresso hoje";
+    
+}
+/* 
+pegar ícones do google
+
+*/
