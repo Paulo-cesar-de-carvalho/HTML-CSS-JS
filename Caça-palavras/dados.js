@@ -27,7 +27,7 @@ const cidadesEstrangeiras = ['Shanghai','Bombay','Istanbul','Manila','Moscow','D
     'Koyang','Konya','Madurai','Mendoza','Yantai','an-Najaf','Qinhuangdao','Alīgarh','Foshan','Birmingham','Naples','Denpasar','Managua','Raipur','Trujillo','Hamamatsu','Xining','Pietermaritzburg','Pingdingshan','Xingtai','Hegang','Ulaanbaatar','Nouakchott']
 
 const todasPalavras = [animais, frutas,  carros,  cidadesBrasileiras,  cidadesEstrangeiras,elementosQuimicos, paises]
-const todosTemas = [ "Animais", "Frutas", "Carros", "Cidades Brasileiras", "Cidades Estrangeiras", "ElementosQuímicos", "Países"]
+const todosTemas = [ "Animais", "Frutas", "Carros", "Cidades Brasileiras", "Cidades Estrangeiras", "Elementos Químicos", "Países"]
 
 let nColunas = 25
 let nLinhas = 36
