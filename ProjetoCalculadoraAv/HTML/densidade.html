@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Densidade</title>
+    <link rel="stylesheet" href= style.css>
+</head>
+<body>
+    <header>
+        <h1>Cálculo de Densidade</h1>
+    </header>
+    <main>
+        <p><label for="peso-ar">Informe o peso no ar: </label><input type="number" name="Peso-na-Água" id="peso-ar" placeholder="em gramas"></p>
+        <p><label for="peso-agua">Informe o peso na água: </label><input type="number" name="Peso-na-Água" id="peso-agua" placeholder="em gramas"></p>
+        <p>Densidade Calculada: <span id="densidade">Valor</span></p>
+    </main>
+    <footer></footer>
+    <script>
+        let densCalc = document.querySelector("#densidade")
+        densCalc.innerText = "Valor2"
+        let pesoAr = document.querySelector("#peso-ar")
+        let pesoAgua = document.querySelector("#peso-agua")
+
+        function calcular_densidade (pAr, pAgua) {
+            return pAr / (pAr - pAgua)
+        }
+
+        function executar_calculo (){
+            if (!pesoAgua.value =="" && !pesoAr.value ==""){
+                console.log ("Alterou")
+                console.log (pesoAgua.value)
+                densCalc.innerText = calcular_densidade(pesoAr.value, pesoAgua.value).toFixed(2) + "g/cm3"
+            }
+        }
+
+        pesoAgua.addEventListener ("change", executar_calculo)
+        pesoAr.addEventListener ("change", executar_calculo)
+        
+
+
+    </script>    
+</body>
+
+</html>
