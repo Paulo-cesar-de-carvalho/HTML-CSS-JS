@@ -16,7 +16,12 @@ h1{
     text-decoration: underline;
     margin: 15px 0px;
 }
-
+#icoMenu{
+    color: white;
+    display: block;
+    margin: auto;
+    text-align: center;
+}
 
 menu>ul{
     display: block;
