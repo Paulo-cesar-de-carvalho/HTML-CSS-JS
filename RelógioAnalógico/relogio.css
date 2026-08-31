@@ -1,0 +1,9 @@
+.mostrador{
+    border: 1px solid black;
+    width: 400px;
+    height: 400px;
+    margin: auto;
+    border-radius: 100%;
+    position: absolute;
+    transform-origin: center;
+}
