@@ -1,4 +1,6 @@
 const mostrador = document.querySelector("#mostrador")
+const inputRadios = document.querySelectorAll('input[name="modo"]')
+let frequencia = Number(document.querySelector('input[name="modo"]:checked').value)
 
 const ponteiro = document.createElement('div')
 ponteiro.setAttribute('class','ponteiro')
@@ -9,7 +11,6 @@ const segundosDoDia = () =>{
     const minutos = tempo.getMinutes() + segundos /60
     const horas = tempo.getHours() + minutos / 60
     return horas * 3600
-
 } 
 
 class Ponteiro {
@@ -22,7 +23,8 @@ class Ponteiro {
         this.id = `i${periodoM}`
         this.criacao = this.criar() //funcão é chamada quando se cria um novo objeto da classe
         this.eu = document.getElementById(this.id)
-        this.giro = setInterval(this.girar, 200)
+        this.frequencia = frequencia
+        this.giro = setInterval(this.girar, 50)
     }
     criar = ()=>{
         const pont = document.createElement('div')
@@ -33,7 +35,9 @@ class Ponteiro {
         pont.setAttribute('style',`rotate:${angulo}deg;width:${this.comprimento}px;height:${this.largura}px`)
     }
     girar = ()=>{
-        const angulo = (segundosDoDia()/ this.periodo * 6 - 90) % 360
+        frequencia = Number(document.querySelector('input[name="modo"]:checked').value)
+        let segundosArredondados = frequencia == 1000? Math.floor(segundosDoDia()) : segundosDoDia()
+        const angulo = (segundosArredondados/ this.periodo * 6 - 90) % 360
         const pont1 = this.eu
         pont1.setAttribute('style',`rotate:${angulo}deg;width:${this.comprimento}px;height:${this.largura}px`)
 
@@ -43,6 +47,13 @@ class Ponteiro {
 const ponteiroS = new Ponteiro(1,155,2,mostrador)
 const ponteiroM = new Ponteiro(60,140,4,mostrador)
 const ponteiroH = new Ponteiro(12*60,90,10,mostrador)
+
+inputRadios.forEach(radio => {
+    radio.addEventListener('change', () => {
+        ponteiroS.frequencia = Number(document.querySelector('input[name="modo"]:checked').value)
+    })
+})
+
 
 class Algarismos {
     constructor(mostrador, algarismo) {
