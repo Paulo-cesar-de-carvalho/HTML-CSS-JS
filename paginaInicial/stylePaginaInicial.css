@@ -8,19 +8,34 @@ body{
     background-color: black;
 }
 
-.itens{
+.itens ul{
     text-align: center;
-    background-color: beige;
+    background-color: rgb(189, 129, 26);
     width: 50%;
-    height: 50vh;
-    margin: 25% auto;
-}
-ul{
+    margin: auto;
     display: flex;
     flex-flow: column wrap;
-    
+    align-items: center;
+    height: 400px;
+    padding: 20px;
+    border-radius: 10px;
 }
 
 li{
-    margin: 15px 0px;
+    margin: 15px;
+}
+
+.itens a {
+    color: #cccccc;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s;
+}
+
+.itens a:hover {
+    transition: color 1s;
+    color: rgb(189, 129, 26);
+    color:black;
+    font-size: 115%;
+    text-decoration: underline;
 }

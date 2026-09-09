@@ -1,0 +1,7 @@
+#pagina-inicial, #pagina-inicial>a>img{
+    margin: 3px 0px 3px 3px;
+    width: 30px;
+    height: 30px;
+    background-color: beige;
+    color: beige;
+}
