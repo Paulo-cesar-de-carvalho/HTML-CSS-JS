@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Calendário Perpétuo</title>
+        
+        <link rel = "stylesheet" href= "Calendario.css">
+    </head>
+    <body >
+        <header>
+            <a href="../paginaInicial/index.html"></a>
+        </header>
+        <main>
+            
+            <img src="arame.png" alt="Arame do Calendario" class="arame">
+            <section id="area-calendario">
+                
+                <div class="controles" id="controles">
+                    <input type="button" value="<<< -10 anos" id="anterior-decada" data-valor = -120>
+                    <input type="button" value="<<<-1 ano" id="anterior-ano" data-valor = -12>
+                    <input type="button" value="<<< -1 mês" id="anterior-mes" data-valor = -1>
+                    <input type="button" value="+1 mês >>>" id="proximo-mes" data-valor = 1>
+                    <input type="button" value="+1 ano >>>" id="anterior-ano" data-valor = 12>
+                    <input type="button" value="+10 anos >>>" id="anterior-decada " data-valor = 120>
+                    <div class="mes-ano" id="mes-ano"></div>
+                    </div>
+                <div class="dia-do-mes" id="dia-do-mes"></div>
+
+            </section>
+            
+        </main>
+        <script src="Calendário.js"></script>    
+    </body>
+</html>

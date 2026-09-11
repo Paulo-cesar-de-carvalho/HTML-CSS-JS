@@ -1,0 +1,111 @@
+/*medidas 19.50 X 14.00*/
+
+*{
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+header, body{
+    background-color: black;
+    width: 95%;
+    margin: auto 2.5%;
+    min-width: 440px;
+}
+.controles input{
+    font-weight: bold;
+    margin: -3px 10px;
+    width: 175px;
+    height: 35px;
+    color: white;
+    background-color:grey;
+    border-radius: 5px;
+    box-shadow: 5px black;
+}
+
+.arame{
+    width: 95%;
+    margin: -4px  2.5%;
+    /*border: beige;*/
+}
+
+#area-calendario{
+    width: 95%;
+    margin: 0 2.5%;
+    background-color: beige;
+    /*border: solid beige 1.5px;*/
+    height: 700px;
+    vertical-align: top;
+    background-image: url('textura.png');
+    background-repeat: repeat;
+}
+
+.mes-ano{
+    height: 10%;
+    width: 90%;
+    margin: 15px 5%;
+    /*border: 15px beige solid;*/
+    text-align: right;
+    color: blue;
+    font-size: 300%;
+    font-weight: bold;
+}
+
+/*th{
+    color:blue
+}
+
+td{
+    background-color: none;
+    border: solid blue 1px;
+    color: blue;
+    vertical-align: middle;
+    text-align: center;
+    font-weight: bold;
+    font-size: 300%;
+}*/
+
+.dia-do-mes{
+    position: absolute;
+    width: 90%;
+    height: 120px;
+    margin: 1em auto;
+    height: 80%;
+    border: none ;
+    opacity: 100%;
+}
+
+/*.domingo{
+    border: solid orangered 1px;
+    color: orangered;
+    border-color: orangered;
+}*/
+
+
+
+.feriado{
+    background-color: orangered;
+    color: white;
+}
+
+/*.invisivel {
+    display: none;
+}*/
+.novo-dia{
+    position: absolute;
+    background-color: none;
+    border: solid blue 1px;
+    color: blue;
+    vertical-align: middle;
+    text-align: center;
+    font-weight: bold;
+    font-size: 300%;
+
+}
+.dia-semana{
+    position: absolute;
+    text-align: center;
+    color: blue;
+}
