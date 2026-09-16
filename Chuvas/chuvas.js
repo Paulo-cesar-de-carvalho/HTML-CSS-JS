@@ -54,56 +54,69 @@ botoes.map((b,i,arr)=>{
 })    
 montar_tabela('Retiro')
 
-const selectAno = document.querySelector('#ano')
+// const selectAno = document.querySelector('#ano')
+const botoesAno = document.querySelector('#botoes-ano')
 for (let i = 2014;i<2026;i++){
-    let item = document.createElement('option')
-    item.text = i
-    item.value = i
-    selectAno.appendChild(item)
+    let item = document.createElement('button')
+    item.classList.add('btn')
+    item.classList.add('btnAno')
+    item.innerText = i
+    //item.value = i
+    botoesAno.appendChild(item)
 }
 
-selectAno.addEventListener('change',(e)=>{
-    let ano = e.target.value
+const botoesAnos = [...document.querySelectorAll('.btnAno')]
+botoesAnos.map((b)=>{
+    b.addEventListener('click',(e)=>{
+    let ano = e.target.innerText
     let local = document.querySelector('th').innerText
     montar_grafico(ano,local)
+        
 
+    })
 })
+
+// selectAno.addEventListener('click',(e)=>{
+//     let ano = e.target.value
+//     let local = document.querySelector('th').innerText
+//     montar_grafico(ano,local)
+
+// })
 
 function montar_grafico(ano, local){
         console.log(ano, local)
-    //Gráfico:
-
-    // const grafico = document.querySelector('#grafico')
-    //  if (graf !== null) {
-    //     graf.destroy();
-    // }
-    const graficoExistente = Chart.getChart("grafico"); // Passa o ID do canvas
-        if (graficoExistente) {
-             graficoExistente.destroy();
-}
-
-
+    const graficoExistente = Chart.getChart("grafico"); 
+    if (graficoExistente) {
+            graficoExistente.destroy();
+    }
     const graf = new Chart(grafico, {
         type: 'bar',
         data: {
         labels: [...listar_meses()],
         datasets: [{
-            label: '# of Votes',
+            label: `${local} - ${ano} (em mm de chuva)`,
             data: [...calcular_precipitacao(local,ano)],
             borderWidth: 1
         }]
         },
         options: {
+            color: '#ffffff',
             scales: {
                 x:{
                     grid:{
                         display:false // inibe  exibição das linha de grade
+                    },
+                    ticks: {
+                         color: '#00ff00' // Cor do texto do eixo X
                     }
                 },
                 y: {
                     beginAtZero: true,
                     grid:{
                         display:false //Inibe exibição das linhas de grade
+                    },
+                    ticks: {
+                        color: '#00ff00' // Cor do texto do eixo X
                     }
                 }
             }
