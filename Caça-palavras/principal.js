@@ -1,3 +1,9 @@
+for (tema of todosTemas){
+    let opcao = document.createElement("option")
+    opcao.innerText = tema
+    opcoesTemas.appendChild(opcao)
+}
+
 function aleatorio_entre(inf, sup){
     return Math.floor(Math.random()*(sup - inf + 1) + inf)
 }

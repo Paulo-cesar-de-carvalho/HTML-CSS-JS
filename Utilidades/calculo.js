@@ -36,10 +36,10 @@ function calcularFeriados(ano) {
         { nome: "Tiradentes", data: new Date(ano, 3, 21) },
         { nome: "Dia do Trabalho", data: new Date(ano, 4, 1) },
         { nome: "Corpus Christi", data: new Date(pascoa.getFullYear(), pascoa.getMonth(), pascoa.getDate() + 60) }, 
-        { nome: "Independência do Brasil", data: new Date(ano, 8, 7) },
+        { nome: "Independência do Brasil", data: ano>=1822 ? new Date(ano, 8, 7): null },
         { nome: "Nossa Senhora Aparecida", data: new Date(ano, 9, 12) },
         { nome: "Finados", data: new Date(ano, 10, 2) },
-        { nome: "Proclamação da República", data: new Date(ano, 10, 15) },
+        { nome: "Proclamação da República", data: ano>= 1889 ? new Date(ano, 10, 15) : null },
         { nome: "Dia da Consciência Negra", data: ano >= 2023 ? new Date(ano, 10, 20) : null },
         { nome: "Natal", data: new Date(ano, 11, 25) }
         
@@ -50,11 +50,9 @@ function calcularFeriados(ano) {
 function ehFeriado(data) {
     const d = new Date(data.getFullYear(), data.getMonth(), data.getDate()); // Normaliza a data para ignorar horas, minutos e segundos
     const ano = d.getFullYear();
-    console.log(d)
     const feriados = calcularFeriados(ano);
     return feriados.some(feriado => feriado.data && feriado.data.getTime() === d.getTime());
 }
-console.log(ehFeriado(new Date("07-09-2026"))); // Exemplo de uso
 let inputAnoFeriados = document.querySelector("#feriados")
 inputAnoFeriados.addEventListener("change", (e) => {
     let localResultadoFeriados = document.querySelector("#resultado-feriados")
@@ -75,7 +73,7 @@ function contar_dias_uteis(inicio, fim) {
         let diaSemana = dataInicial.getDay();
         if (diaSemana !== 0 && diaSemana !== 6) { // 0 = Domingo, 6 = Sábado
             if (!ehFeriado(dataInicial)) {
-                console.log(dataInicial, dataFinal)
+               
                 x++;
                 
             }
@@ -86,7 +84,6 @@ function contar_dias_uteis(inicio, fim) {
 }
 //corrigir diferença de uma dia.
 
-console.log(contar_dias_uteis(new Date(2026, 8, 5), new Date(2026, 8, 7))); // Exemplo de uso
 // Existe uma diferença de um dia em relacão ao que é informado no html para o javascript, por isso é necessário adicionar +1 ao dia informado no html para que o javascript conte corretamente os dias úteis.
 let inputContarDiasUteis = document.querySelectorAll("#dias-uteis input")
 inputContarDiasUteis.forEach(input => {
@@ -98,7 +95,6 @@ inputContarDiasUteis.forEach(input => {
         let fim = document.querySelector("#dias-uteis-fim").value
         fim = new Date(fim)
         fim = new Date(fim.getFullYear(), fim.getMonth(), fim.getDate()+1)
-        console.log(`inicio: ${inicio}, fim: ${fim}`)
         if (!inicio || !fim) {
             localResultadoDiasUteis.textContent = ""
             }else {   

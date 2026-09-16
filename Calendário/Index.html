@@ -10,7 +10,9 @@
     </head>
     <body >
         <header>
-            <a href="../paginaInicial/index.html"></a>
+            <div class="pagina-inicial">
+                <a  href="../paginaInicial/index.html"><img class="pagina-inicial" src="../Arquivos em comum/paginaInicial.png" alt="página Inicial" srcset=""></a>
+            </div>
         </header>
         <main>
             
@@ -18,12 +20,14 @@
             <section id="area-calendario">
                 
                 <div class="controles" id="controles">
+                    <input type="button" value="<<< -100 anos" id="anterior-decada" data-valor = -1200>
                     <input type="button" value="<<< -10 anos" id="anterior-decada" data-valor = -120>
                     <input type="button" value="<<<-1 ano" id="anterior-ano" data-valor = -12>
                     <input type="button" value="<<< -1 mês" id="anterior-mes" data-valor = -1>
                     <input type="button" value="+1 mês >>>" id="proximo-mes" data-valor = 1>
                     <input type="button" value="+1 ano >>>" id="anterior-ano" data-valor = 12>
                     <input type="button" value="+10 anos >>>" id="anterior-decada " data-valor = 120>
+                    <input type="button" value=" +100 anos >>>" id="anterior-decada" data-valor = +1200>
                     <div class="mes-ano" id="mes-ano"></div>
                     </div>
                 <div class="dia-do-mes" id="dia-do-mes"></div>
@@ -31,6 +35,7 @@
             </section>
             
         </main>
+        <script src="../Utilidades/calculo.js"></script>
         <script src="Calendário.js"></script>    
     </body>
 </html>

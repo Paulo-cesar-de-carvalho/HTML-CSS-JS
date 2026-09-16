@@ -43,8 +43,3 @@ let limiteErros = 10
 let campoStatusJogo = document.getElementById("status-jogo")
 let opcoesTemas = document.querySelector("#tema")
 
-for (tema of todosTemas){
-    let opcao = document.createElement("option")
-    opcao.innerText = tema
-    opcoesTemas.appendChild(opcao)
-}

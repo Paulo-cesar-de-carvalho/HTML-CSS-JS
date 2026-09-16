@@ -28,7 +28,12 @@ class Dia{
         d.setAttribute('class','novo-dia')
         d.innerText = this.diaAtual
         let estilo = `top:${this.top}px;left:${this.left}px;width:${this.largura}px;height:${this.altura}px`  
-        if (this.dataAtual.getDay() == 0){estilo += `;border-color:orangered; color:orangered;`}
+        if (this.dataAtual.getDay() == 0){
+            estilo += `;border-color:orangered; color:orangered;`
+        } else if(ehFeriado(this.dataAtual)){
+            estilo+= `; background-color:orangered`   
+        
+        }
         let hoje = new Date()
         if (this.dataAtual.getFullYear() == hoje.getFullYear() && this.dataAtual.getMonth() == hoje.getMonth() && this.dataAtual.getDate() == hoje.getDate() ){
             estilo += `;background-color: green`
@@ -80,12 +85,4 @@ botoes.map((b)=>{
     })
 })
 
-    //parei criando feriados:
-    function retornar_feriados (dataRef){
-        let original = [[1,1],[21,4],[1,5],[7,9],[12,10],[2,11],[15,11],[25,12]]
-        let feriados = []
-        for (let i in original){
-            feriados.push (new Date(dataRef.getFullYear(),Number(original[i][1])-1,Number(original[i][0])))
-        }
-        return feriados
-    }
+//alterar oara módulo e corrigir erro de acesso no cálculo

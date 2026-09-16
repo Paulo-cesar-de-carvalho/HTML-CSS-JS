@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chuvas</title>
+    <link rel="stylesheet" href="chuvas.css">
+</head>
+<body>
+    <header>
+        <div id="pagina-inicial">
+            <a href="../paginaInicial/index.html"><img src="../Arquivos em comum/paginaInicial.png" alt="página Inicial" srcset=""></a>
+        </div>
+        <h1>Índice Pluviométrico</h1>
+    </header>
+    <main>
+        <p>
+            <input type="button" value="Retiro" id="btn-retiro" class="btn clicado">
+            <input type="button" value="Angola" id="btn-angola" class="btn">
+            
+        </p>
+        
+        <section >
+            <table class="tabela-chuva" id="tabela-chuva">
+    
+            </table>
+    
+        </section>
+        <p>
+            <label for="ano">Escolha o ano para analisar:</label>
+            <select name="" id="ano"></select>
+        </p>
+        <canvas id="grafico" class="grafico" width=450px height="300px">
+
+        </canvas>
+
+    </main>
+    <footer></footer>
+        
+    
+</body>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="chuvasDados.js"></script>
+<script src="chuvas.js"></script>
+
+</html>

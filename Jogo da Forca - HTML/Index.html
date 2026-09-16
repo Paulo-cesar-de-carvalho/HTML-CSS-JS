@@ -4,21 +4,41 @@
         <meta charset = "UTF-8">
 	    <meta name="viewport" content="width = device-width">
 	    <title>Jogo da Forca</title>
-        <link rel= "stylesheet" href= "reset.css">
+         <div id="pagina-inicial">
+            <a href="../paginaInicial/index.html"><img src="../Arquivos em comum/paginaInicial.png" alt="página Inicial" srcset=""></a>
+        </div>
+        <!-- <link rel= "stylesheet" href= "reset.css"> -->
         <link rel= "stylesheet" href= "Forca.css">
         
     </head>
     <body>
-        
-    <main>
-        <h1 class="titulo">Bem-vindo ao jogo da Forca</h1>
-        <div class="insere">
-            <label for="chute">Escolha uma letra: <input type="text" name="chute" id="chute" class="entrada"></label>
-        </div>
-        <div class="painel"></div>
-    </main>
+        <main>
+            <h1 class="titulo">Bem-vindo ao jogo da Forca</h1>
+            <p class="qte-letras" id="qte-letras">
+                <label for="qte">Escolha a quantidade de palavras:</label>
+                <input type="number" name="qte" id="qte" class="entrada" value=3> 
 
-        <script src="principal.js"></script>
+            </p>
+            <!-- <p class="letra-informada" id="letra-informada">
+                <label for="tema">Escolha o tema:</label>
+                <input type="text" name="tema" id="tema" class="entrada">
+            </p> -->
+            <p class="letra-informada" id="letra-informada">
+                <label for="chute">Escolha uma letra:</label>
+                <input type="text" name="chute" id="chute" class="entrada">
+            </p>
+            <p class="letra-informada" id="letra-informada">
+                <label for="exibe">Exibe o tema?</label>
+                <label for="exibe-sim" name="">sim</label>
+                <input type="radio" name="exibe" id="exibe-sim">
+                <label for="exibe-nao" name="">não</label>
+                <input type="radio" name="exibe" id="exibe-nao">
+                
+            </p>
+            <div class="painel" id="painel"></div>
+        </main>
     </body>
+    <script src="../Caça-palavras/dados.js"></script>
+    <script src="principal.js"></script>
 </html>
 

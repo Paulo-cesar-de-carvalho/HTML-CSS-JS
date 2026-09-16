@@ -14,15 +14,27 @@ header, body{
     margin: auto 2.5%;
     min-width: 440px;
 }
+
+.pagina-inicial, .pagina-inicial>a>img{
+    margin: 3px 0px 3px 3px;
+    width: 30px;
+    height: 30px;
+    border-radius: 3px;
+}
+
 .controles input{
     font-weight: bold;
     margin: -3px 10px;
-    width: 175px;
+    width: 120px;
     height: 35px;
     color: white;
     background-color:grey;
     border-radius: 5px;
     box-shadow: 5px black;
+}
+.controles input:hover{
+    color: blue;
+    transition: 1.5s;
 }
 
 .arame{
@@ -35,8 +47,7 @@ header, body{
     width: 95%;
     margin: 0 2.5%;
     background-color: beige;
-    /*border: solid beige 1.5px;*/
-    height: 700px;
+    height: 630px;
     vertical-align: top;
     background-image: url('textura.png');
     background-repeat: repeat;
@@ -53,19 +64,6 @@ header, body{
     font-weight: bold;
 }
 
-/*th{
-    color:blue
-}
-
-td{
-    background-color: none;
-    border: solid blue 1px;
-    color: blue;
-    vertical-align: middle;
-    text-align: center;
-    font-weight: bold;
-    font-size: 300%;
-}*/
 
 .dia-do-mes{
     position: absolute;
@@ -77,22 +75,7 @@ td{
     opacity: 100%;
 }
 
-/*.domingo{
-    border: solid orangered 1px;
-    color: orangered;
-    border-color: orangered;
-}*/
 
-
-
-.feriado{
-    background-color: orangered;
-    color: white;
-}
-
-/*.invisivel {
-    display: none;
-}*/
 .novo-dia{
     position: absolute;
     background-color: none;
