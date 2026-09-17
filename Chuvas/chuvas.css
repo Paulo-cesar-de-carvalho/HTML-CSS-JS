@@ -60,7 +60,7 @@ tr:nth-child(2n){
 th,td{
     text-align: center;
     /*border: solid 1px black;*/
-    width: 35px;
+    width: 45px;
     height: 30px;
     direction: rtl;
     
