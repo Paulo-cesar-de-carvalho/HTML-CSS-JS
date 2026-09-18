@@ -1,6 +1,17 @@
 function def_item(item){
     return todosElementos[0].indexOf(item)
 }
+function def_max_min(item){
+    const x = []
+    todosElementos.map((e,i)=>{
+        if (i>0){
+            x.push((e[def_item(item)].replace(',','.')))
+        }
+    })
+    console.log(x)
+    return [Math.max(...x),Math.min(...x)]
+}
+//console.log(def_max_min('Massa atômica'))
 
 const valoresElementoDestaque = []
 //Botões
@@ -14,15 +25,18 @@ temaBotoes.map((e)=>{
     botao.value = e
     botao.innerText = e
     areaBotoes.appendChild(botao)
+    
     botao.addEventListener('click',(e)=>{
         criar_tabela(e.target.innerText)        
     })
 })
 
-
+//criar o método colorir para não precisar criar nova tabela a cada alteração
 class Elementos{
     constructor(tabela,elementoDestaque,[...dados]){
         this.elementoDestaque = elementoDestaque
+        this.vrElementoDestaque = dados[def_item(elementoDestaque)].replace(',','.')
+        valoresElementoDestaque.push(this.vrElementoDestaque)
         this.Z = dados[0]
         this.simbolo = dados[1]
         this.nome = dados[2]
@@ -33,11 +47,11 @@ class Elementos{
         this.coluna = dados[def_item('Coluna')]
         this.esquerda = (this.coluna-1)*this.largura
         this.topo = (this.linha-1)*this.altura
-        this.vrElementoDestaque = dados[def_item(elementoDestaque)]
+       
         this.id = `i${this.Z}`
         this.criacao = this.criar_elemento()
         this.eu = document.getElementById(this.id)
-        valoresElementoDestaque.push(this.vrElementoDestaque)
+        
     }
     criar_elemento = ()=>{
         const elementoZ = document.createElement('div')
@@ -61,15 +75,13 @@ class Elementos{
         elemento.appendChild(elementoNome)
         elemento.appendChild(elementoOutro)
         
-        
         elemento.setAttribute('class','cada-elemento')
-        //elemento.innerText = this.Z
         elemento.setAttribute('id',this.id)
-        elemento.setAttribute('style',`width:${this.largura}px;height:${this.altura}px;top:${this.topo}px;left:${this.esquerda}px;background-color:${variacao_azul(7,1,7)}`)
+        elemento.setAttribute('style',`width:${this.largura}px;height:${this.altura}px;top:${this.topo}px;left:${this.esquerda}px;background-color:${variacao_azul(this.vrElementoDestaque,def_max_min(this.elementoDestaque)[1],def_max_min(this.elementoDestaque)[0])}`)
         this.tabela.appendChild(elemento)
 
     }
-    colorir_elemento = ()=>{
+    colorir_elemento = (max,min)=>{
 
     }
 }
@@ -90,7 +102,7 @@ function criar_tabela(elementoDestaque){
 criar_tabela('Subnível')
 
 function variacao_azul(valor,min,max){
-    const rInf=0,gInf=0,bInf=100,rSup=135,gSup=206,bSup=255
+    const rInf=135,gInf=206,bInf=255,rSup=31,gSup=48,bSup=136
     const perc = (valor-min)/(max-min) 
     let r = Math.floor((rSup-rInf)*perc+rInf)
     let g = Math.floor((gSup-gInf)*perc+gInf)
