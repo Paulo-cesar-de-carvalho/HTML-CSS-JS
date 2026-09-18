@@ -5,7 +5,7 @@ function def_max_min(item){
     const x = []
     todosElementos.map((e,i)=>{
         if (i>0){
-            x.push((e[def_item(item)].replace(',','.')))
+            x.push((e[def_item(item)]))
         }
     })
     console.log(x)
