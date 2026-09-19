@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cores</title>
+    <style>
+        .cores{
+            width: 95%;
+            border: 1px solid black;
+            height: 50vh;
+            position: absolute;
+        }
+        .cada-cor{
+            width: 30px;
+            display: inline-block;
+            /* border: 1px solid black; */
+            height: 60px;
+            text-align: center;
+        }
+        .define-cores{
+            margin: 15px;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Transição de Cores</h1>
+    </header>
+    <main>
+        <div id="define_cores" class="define-cores">
+            <p>
+                <label for="cof-inf">Primeira Cor:</label>
+                <input type="color" name="cor_inf" id="cor_inf">
+                <span id="res_cor_inf"></span>
+    
+            </p>
+            <p>
+                <label for="cof-sup">Segunda Cor:</label>
+                <input type="color" name="cor_sup" id="cor_sup">
+                <span id="res_cor_sup"></span>
+    
+            </p>
+            <p>
+                <label for="cof-texto">Cor Texto:</label>
+                <input type="color" name="cor_texto" id="cor_texto">
+                <span id="res_cor_texto"></span>
+    
+            </p>
+    
+        </div>
+    </main>
+    
+    <div id="cores" class="cores"></div>
+    
+</body>
+    <script>
+        [...document.querySelectorAll('input')].map((e)=>{
+            e.addEventListener('change',()=>{
+                let corInferior = document.querySelector('#cor_inf').value
+                let corSuperior = document.querySelector('#cor_sup').value
+                let corTexto = document.querySelector('#cor_texto').value
+                let resCorInf = document.querySelector('#res_cor_inf')
+                let resCorSup = document.querySelector('#res_cor_sup')
+                let resCorTexto = document.querySelector('#res_cor_texto')
+                resCorInf.innerHTML = corInferior
+                resCorSup.innerHTML = corSuperior
+                resCorTexto.innerHTML = corTexto
+
+                corInferior = hexParaRgb(corInferior)
+                corSuperior = hexParaRgb(corSuperior)
+                corTexto = hexParaRgb(corTexto)
+
+                resCorInf.innerHTML += `  -   R:${corInferior.r} G:${corInferior.g} B:${corInferior.g}`
+                resCorSup.innerHTML += `  -   R:${corSuperior.r} G:${corSuperior.g} B:${corSuperior.g}`
+                resCorTexto.innerHTML += `  -   R:${corTexto.r} G:${corTexto.g} B:${corTexto.g}`
+
+               
+                const r = corInferior.r,  g = corInferior.g, b = corInferior.b
+                const R = corSuperior.r,  G = corSuperior.g, B = corSuperior.b
+                const rt = corTexto.r,  gt = corTexto.g, bt = corTexto.b
+                const divCores = document.querySelector('#cores')
+                divCores.innerHTML = ''
+                for(let i = 1;i<=200;i++){
+                    const cada_cor = document.createElement('div')
+                    cada_cor.classList.add('cada-cor')
+                    let corAtual = definir_cor(i,1,200,r,g,b,R,G,B)
+                    let corTexto = `rgb(${rt},${gt},${bt})`
+                    cada_cor.setAttribute('style',`background-color:${corAtual};color:${corTexto}`)
+                    cada_cor.innerHTML= corAtual.replace('rgb(','').replaceAll(',','<br>').replace(')','')
+                    divCores.appendChild(cada_cor)
+                }
+
+
+
+            })
+        })
+
+
+
+       
+        
+        function hexParaRgb(hex) {
+            hex = hex.replace('#', '');
+
+            let r = parseInt(hex.substring(0, 2), 16);
+            let g = parseInt(hex.substring(2, 4), 16);
+            let b = parseInt(hex.substring(4, 6), 16);
+
+            return { r, g, b };
+            }
+
+       
+        function definir_cor(valor,min,max,rInf,gInf,bInf,rSup,gSup,bSup){
+            const perc = (valor-min)/(max-min) 
+            let r = Math.floor((rSup-rInf)*perc+rInf)
+            let g = Math.floor((gSup-gInf)*perc+gInf)
+            let b = Math.floor((bSup-bInf)*perc+bInf)
+
+            return `rgb(${r},${g},${b})`
+        }
+
+
+
+
+    </script>
+</html>
