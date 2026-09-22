@@ -25,7 +25,7 @@
             /*border: 1px solid black ;*/
             position: absolute;
             text-align: center;
-            font-size: 0.9em;
+            font-size: 0.6em;
             
         }
 
@@ -69,7 +69,7 @@
             <option value="G">G</option>
             <option value="B">B</option>
        </select>
-       <input type="number" min="0" max="255" id="cor-referencia" class="cor-referencia">
+       <input type="number" min="0" max="255" value="0" id="cor-referencia" class="cor-referencia">
        
         <div id="todas-cores" class="cores"></div>
 
@@ -159,9 +159,6 @@
             listar_cores(document.querySelector('#cor-referencia').value,e.target.value)
 
         })
-
-
-       
         
         function hexParaRgb(hex) {
             hex = hex.replace('#', '');
