@@ -1,12 +1,15 @@
 function calcular_precipitacao(local, ano=0, mesNum=0){
     const n = locais.indexOf(local)
+    
     if(mesNum==0){
-        (chuvas[n][ano-2014]).shift()
-        return chuvas[n][ano-2014]
+        let x = [...chuvas[n][ano-2014]]
+        x.shift()
+        return x
     } else{
         return chuvas[n][ano-2014][mesNum]
     }
 }
+console.log(calcular_precipitacao('Angola',2016))
 
 function listar_meses(){
     let x = []
@@ -71,17 +74,9 @@ botoesAnos.map((b)=>{
     let ano = e.target.innerText
     let local = document.querySelector('th').innerText
     montar_grafico(ano,local)
-        
 
     })
 })
-
-// selectAno.addEventListener('click',(e)=>{
-//     let ano = e.target.value
-//     let local = document.querySelector('th').innerText
-//     montar_grafico(ano,local)
-
-// })
 
 function montar_grafico(ano, local){
         console.log(ano, local)
@@ -125,5 +120,5 @@ function montar_grafico(ano, local){
 
 }
 
-
+//  corrigir elinação indevida quando é acionado o gráfico
   

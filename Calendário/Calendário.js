@@ -85,4 +85,10 @@ botoes.map((b)=>{
     })
 })
 
-//alterar oara módulo e corrigir erro de acesso no cálculo
+window.addEventListener('resize',()=>{
+    console.log('redminensonando')
+    
+
+})
+
+//alterar oara módulo e corrigir 

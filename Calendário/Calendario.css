@@ -1,8 +1,7 @@
 /*medidas 19.50 X 14.00*/
 
 *{
-    box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
+        font-family: Arial, Helvetica, sans-serif;
     margin: 0;
     padding: 0;
     border: 0;
@@ -10,7 +9,7 @@
 
 header, body{
     background-color: black;
-    width: 95%;
+    width: 98%;
     margin: auto 2.5%;
     min-width: 440px;
 }
@@ -24,13 +23,16 @@ header, body{
 
 .controles input{
     font-weight: bold;
-    margin: -3px 10px;
+    margin: -3px 0px;
     width: 120px;
     height: 35px;
     color: white;
     background-color:grey;
     border-radius: 5px;
-    box-shadow: 5px black;
+    
+    align-content: center;
+    /*box-shadow: 5px black;*/
+    cursor: pointer;
 }
 .controles input:hover{
     color: blue;
@@ -73,6 +75,7 @@ header, body{
     height: 80%;
     border: none ;
     opacity: 100%;
+    
 }
 
 
@@ -84,11 +87,13 @@ header, body{
     vertical-align: middle;
     text-align: center;
     font-weight: bold;
-    font-size: 300%;
+    font-size: 280%;
+    align-content: center;
 
 }
 .dia-semana{
     position: absolute;
     text-align: center;
     color: blue;
+    
 }
