@@ -14,7 +14,7 @@ body{
     margin: 3px 0px 3px 3px;
     width: 30px;
     height: 30px;
-    background-color: beige;
+    background-color:rgb(170, 216, 237);
     color: beige;
     
 }
@@ -45,7 +45,7 @@ tr:nth-child(2n){
     font-weight: bold;
     cursor: pointer;
     background-color: rgb(216, 249, 238);
-    border-radius:3px 3px 0px 0px;
+    border-radius:6px 6px 0px 0px;
     width: 180px;
     height: 45px;
     font-size: 1.3em;
@@ -94,9 +94,54 @@ td{
     
 }
 
-.btnAno{
+/* .btnAno{
     border-radius: 4px;
     margin: 2px;
     width: 50px;
+    font-size: 1em;
 
+}
+
+.btnAno:hover{
+     transition: background-color 0.2s ease;
+} */
+
+/* Estilização do Botão 3D */
+.btnAno {
+  position: relative;
+  display: inline-block;
+  
+  font-size: 1em;
+  font-weight: bold;
+  font-family: sans-serif;
+  color: #ffffff;
+  background-color: #60EE10; /* Cor principal (topo) */
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  outline: none;
+  margin: 4px;
+  width: 65px;
+  height: 40px;
+  
+  /* Sombra sólida de 6px que cria o efeito de profundidade 3D */
+  box-shadow: 0 6px 0 #4cae0b; 
+  
+  /* Transição suave para efeitos de hover */
+  transition: background-color 0.2s ease;
+}
+
+/* Efeito ao passar o mouse (Hover) */
+.btnAno:hover {
+  background-color: #55df0e;
+  color: black;
+}
+
+/* Efeito ao clicar (Pressionado) */
+.btnAno:active {
+  /* Move o botão para baixo na mesma proporção da sombra */
+  transform: translateY(6px); 
+  
+  /* Reduz a sombra para zero para simular que encostou no fundo */
+  box-shadow: 0 0px 0 #4cae0b; 
 }

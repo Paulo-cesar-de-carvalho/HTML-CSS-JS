@@ -61,7 +61,7 @@ montar_tabela('Retiro')
 const botoesAno = document.querySelector('#botoes-ano')
 for (let i = 2014;i<2026;i++){
     let item = document.createElement('button')
-    item.classList.add('btn')
+    // item.classList.add('btn')
     item.classList.add('btnAno')
     item.innerText = i
     //item.value = i
