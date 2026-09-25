@@ -4,6 +4,7 @@ header, .painel-resultado{
 }
 main{
     margin-top: 30px;
+    border: none;
 }
 td{
     width: 25px;

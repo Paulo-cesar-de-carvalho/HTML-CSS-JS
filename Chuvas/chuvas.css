@@ -145,3 +145,16 @@ td{
   /* Reduz a sombra para zero para simular que encostou no fundo */
   box-shadow: 0 0px 0 #4cae0b; 
 }
+/* Configurações exlusivas para impressao */
+@media print{
+    html,body{
+        width: 100%;
+        margin: auto;
+    }
+    #pagina-inicial, input,#grafico,#botoes-ano{
+
+        display: none;
+
+    }
+
+}

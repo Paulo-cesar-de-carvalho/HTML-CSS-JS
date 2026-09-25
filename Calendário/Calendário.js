@@ -24,7 +24,7 @@ class Dia{
         
     }
     criar_dia = () =>{
-        const d = document.createElement('div')
+        const d = document.createElement('td')
         d.setAttribute('class','novo-dia')
         d.innerText = this.diaAtual
         let estilo = `top:${this.top}px;left:${this.left}px;width:${this.largura}px;height:${this.altura}px`  
@@ -53,7 +53,7 @@ class Dia{
     }
     criar_dias_semana = () =>{
         if (posicao<=7){
-            const diaSemana = (this.dataAtual.toLocaleDateString('pt-BR', { weekday: 'long' })).replace('-feira',"")
+            const diaSemana = this.largura <70? (this.dataAtual.toLocaleDateString('pt-BR', { weekday: 'short' })).replace('.',""):(this.dataAtual.toLocaleDateString('pt-BR', { weekday: 'long' })).replace('-feira',"")
             const divTitulo = document.createElement('div')
             divTitulo.innerHTML = diaSemana
             divTitulo.setAttribute('class','dia-semana')
@@ -69,6 +69,9 @@ function montar_mes(data_Ref, area){
         const novoDia = new Dia(data_Ref,area)
     }
     divMesAno.innerHTML = `${dataRef.toLocaleString('pt-BR', { month: 'long' }).toUpperCase()}   ${dataRef.getFullYear()}`
+    if (area.offsetWidth < 500){
+        divMesAno.innerHTML = `${dataRef.toLocaleString('pt-BR', { month: 'short' }).toUpperCase()}   ${dataRef.getFullYear()}`
+    }
 }   
  
 let dataRef = new Date()  
@@ -86,9 +89,7 @@ botoes.map((b)=>{
 })
 
 window.addEventListener('resize',()=>{
-    console.log('redminensonando')
-    
-
+    posicao = 0
+    montar_mes(dataRef, area_Calendario)
 })
 
-//alterar oara módulo e corrigir 

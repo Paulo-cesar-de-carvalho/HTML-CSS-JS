@@ -1,5 +1,4 @@
 /*medidas 19.50 X 14.00*/
-
 *{
         font-family: Arial, Helvetica, sans-serif;
     margin: 0;
@@ -7,11 +6,11 @@
     border: 0;
 }
 
-header, body{
+header, body, main{
     background-color: black;
     width: 98%;
     margin: auto 2.5%;
-    min-width: 440px;
+    /*min-width: 440px;*/
 }
 
 .pagina-inicial, .pagina-inicial>a>img{
@@ -29,9 +28,7 @@ header, body{
     color: white;
     background-color:grey;
     border-radius: 5px;
-    
     align-content: center;
-    /*box-shadow: 5px black;*/
     cursor: pointer;
 }
 .controles input:hover{
@@ -42,14 +39,13 @@ header, body{
 .arame{
     width: 95%;
     margin: -4px  2.5%;
-    /*border: beige;*/
 }
 
 #area-calendario{
     width: 95%;
     margin: 0 2.5%;
     background-color: beige;
-    height: 630px;
+    height: 1000px;
     vertical-align: top;
     background-image: url('textura.png');
     background-repeat: repeat;
@@ -66,8 +62,7 @@ header, body{
     font-weight: bold;
 }
 
-
-.dia-do-mes{
+.dia-do-mes{ /*tabela que contém os dias do mês*/
     position: absolute;
     width: 90%;
     height: 120px;
@@ -78,8 +73,7 @@ header, body{
     
 }
 
-
-.novo-dia{
+.novo-dia{ /*cada dia do mês*/
     position: absolute;
     background-color: none;
     border: solid blue 1px;
@@ -95,5 +89,12 @@ header, body{
     position: absolute;
     text-align: center;
     color: blue;
+    
+}
+
+@media screen and (max-width: 480px) {
+    .novo-dia{
+        font-size: 150%;
+    }
     
 }

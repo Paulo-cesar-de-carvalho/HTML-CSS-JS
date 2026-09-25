@@ -1,6 +1,11 @@
-const mostrador = document.querySelector("#mostrador")
+const mostrador = document.querySelector('#mostrador')
+const elementoCentro = document.createElement('div')
+mostrador.appendChild(elementoCentro)
+elementoCentro.setAttribute('class', 'elemento-centro')
 const inputRadios = document.querySelectorAll('input[name="modo"]')
 let frequencia = Number(document.querySelector('input[name="modo"]:checked').value)
+const inputComplicador = document.querySelectorAll('input[name="complicador"]')
+ 
 
 const ponteiro = document.createElement('div')
 ponteiro.setAttribute('class','ponteiro')
@@ -36,7 +41,8 @@ class Ponteiro {
     }
     girar = ()=>{
         frequencia = Number(document.querySelector('input[name="modo"]:checked').value)
-        let segundosArredondados = frequencia == 1000? Math.floor(segundosDoDia()) : segundosDoDia()
+        let segundosArredondados = Math.floor(segundosDoDia()/frequencia*1000)*(frequencia/1000)
+        //console.log(segundosDoDia())
         const angulo = (segundosArredondados/ this.periodo * 6 - 90) % 360
         const pont1 = this.eu
         pont1.setAttribute('style',`rotate:${angulo}deg;width:${this.comprimento}px;height:${this.largura}px`)
@@ -51,6 +57,18 @@ const ponteiroH = new Ponteiro(12*60,90,10,mostrador)
 inputRadios.forEach(radio => {
     radio.addEventListener('change', () => {
         ponteiroS.frequencia = Number(document.querySelector('input[name="modo"]:checked').value)
+    })
+})
+inputComplicador.forEach(radio=>{
+    radio.addEventListener('change',()=>{
+        let complic = document.querySelector('input[name="complicador"]:checked').value
+        console.log('clicado',complic)
+        if (complic = 'datador'){
+            const divComplica = document.createElement('div')
+            divComplica.setAttribute('class','datador')
+            divComplica.innerHTML = new Date().getDate() < 10? `0${new Date().getDate()}`:new Date().getDate()
+            mostrador.appendChild(divComplica)
+        }
     })
 })
 

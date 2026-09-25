@@ -1,0 +1,36 @@
+*{
+    border: 0px;
+    margin: 0px;
+    padding: 0px;
+}
+:root{
+    --larguraTabuleiro: 480px;
+    --larguraCasa:60px;
+}
+body, main, section, h1{
+    width: var(--larguraTabuleiro);
+    margin-left: 15px;
+    text-align: center;
+}
+.tabuleiro{
+    border-collapse: collapse;
+    margin: auto;
+    border: 0px black solid;
+    position: absolute;
+    width: var(--larguraTabuleiro);
+    height: var(--larguraTabuleiro);
+
+
+}
+.cada-casa{
+    color: transparent;
+    width: var(--larguraCasa);
+    height: var(--larguraCasa);
+}
+.cada-casa:hover{
+    color: rgba(162, 249, 220,0.4);
+    cursor: pointer;
+    text-align: center;
+    align-content: center;
+    font-size: 1.8em;
+}

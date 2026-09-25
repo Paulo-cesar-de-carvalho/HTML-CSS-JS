@@ -8,6 +8,9 @@
 </head>
 <body>
     <header>
+        <div id="pagina-inicial">
+            <a href="../paginaInicial/index.html"><img src="../Arquivos em comum/paginaInicial.png" alt="página Inicial" srcset=""></a>
+        </div>
         <h1>Relógico Analógico</h1>
         <p>
             <input type="radio" id="automático" value="200" name="modo" checked>
@@ -18,10 +21,12 @@
             <label for="continuo">Contínuo</label>
         </p>
         <p>
-            <input type="radio" id="datador" name="complicador" checked>
+            <input type="radio" id="datador" name="complicador" value="datador" >
             <label for="datador">Datador</label>
-            <input type="radio" id="calendário" name="complicador">
+            <input type="radio" id="calendário" name="complicador" value="calendario">
             <label for="calendário">Calendário</label>
+             <input type="radio" id="big-date" name="complicador" value="big-date">
+            <label for="big-date">Big Date</label>
         </p>
     </header>
     <main>

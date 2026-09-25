@@ -3,6 +3,19 @@
     margin: 0px;
     border: 0px;
 }
+header>*{
+    margin: 25px;
+}
+
+#pagina-inicial, #pagina-inicial>a>img{
+    margin: 3px 0px 3px 3px;
+    width: 30px;
+    height: 30px;
+    background-color: beige;
+    color: beige;
+    
+}
+
 
 .mostrador{
     border: 1px solid black;
@@ -12,6 +25,7 @@
     border-radius: 100%;
     position: absolute;
     transform-origin: center;
+    display: flex;
 }
 
 .ponteiro{
@@ -24,6 +38,7 @@
     width: 10rem;
     rotate: 0deg;
     border-radius: 10px;
+    box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.3);
 }
 .algarismo{
     position: absolute;
@@ -32,7 +47,29 @@
     font-size: 2rem;
     align-items: center;
     vertical-align: middle;
-    
     transform-origin: center;
     
+}
+
+.elemento-centro{
+    width: 21px;
+    height: 21px;
+    background-color: black;
+    margin: auto;
+    border-radius: 10px;
+    vertical-align: middle;
+    box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.521);
+}
+.datador{
+    display: flex;
+    width: 30px;
+    height: 30px;
+    border: 1px solid black;
+    position: absolute;
+    top:190px;
+    left: 290px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+ 
 }

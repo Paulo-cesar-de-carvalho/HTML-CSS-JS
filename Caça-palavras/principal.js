@@ -8,21 +8,17 @@ function aleatorio_entre(inf, sup){
     return Math.floor(Math.random()*(sup - inf + 1) + inf)
 }
 function montar_diagrama(arrayCompleto){
-    //Transforma um array em tabela html
-    let numLinhas = arrayCompleto.length
-    let numColunas = arrayCompleto[0].length
-
     let tbDiagrama = document.querySelector("#diagrama")
-
-    for (let linha = 1;linha<=numLinhas;linha++ ){
+    //Transforma um array em tabela html
+    arrayCompleto.map((linha)=>{
         let trDiagrama = document.createElement("tr")
-        for(let coluna = 1; coluna <= numColunas; coluna++){
+        linha.map((e)=>{
             let tdDiagrama = document.createElement("td")
-            tdDiagrama.innerText = arrayCompleto[linha-1][coluna-1]
-            trDiagrama.appendChild(tdDiagrama)            
-        }
+            tdDiagrama.innerText = e
+            trDiagrama.appendChild(tdDiagrama)
+        })
         tbDiagrama.appendChild(trDiagrama)
-    }
+    })
 
 }
 function montar_array (numColunas, numLinhas){
@@ -30,9 +26,6 @@ function montar_array (numColunas, numLinhas){
     for (let linha = 1;linha<=numLinhas;linha++){
         let linhaCompleta = []
         for(let coluna =1; coluna <= numColunas;coluna ++){
-            // linha = (linha.length == 1)?`0${linha.toString()}`:linha.toString()
-            // coluna = (coluna.length == 1)?`0${coluna.toString()}`:coluna.toString()
-            
             linhaCompleta.push ("") //(`L${linha}C${coluna}`)
         }
         arrayCompleto.push (linhaCompleta)
@@ -245,9 +238,8 @@ function encaixar_palavra(palavra,arrayCompleto,dificuldade,incluidas){
 }
 function encaixar_todas_palavras(arrayPalavras,arrayCompleto,dificuldade){
     let incluidas = 0
-    for (palavra of arrayPalavras){ 
-        
-        incluidas = incluidas + encaixar_palavra(palavra,arrayCompleto,dificuldade,0)
+    for (palavra of arrayPalavras){         
+        incluidas += encaixar_palavra(palavra,arrayCompleto,dificuldade,0)
     }
     return incluidas    
 }
@@ -265,16 +257,8 @@ function escolher_palavras (quantidade, base){
 function listar_cada_palavra (palavra, ancora){
     let liPalavra = document.createElement("li")
     liPalavra.innerText = palavra
-    let clicado = false
-    liPalavra.addEventListener("click", function(){
-        if (!clicado){
-            this.setAttribute("class","palavra-encontrada")
-            clicado = true
-        }else{
-            this.removeAttribute("class", "palavra-encontradaa")
-            clicado = false
-        }
-        
+    liPalavra.addEventListener("click", (e)=>{
+        e.target.classList.toggle("palavra-encontrada")
     })
     ancora.appendChild(liPalavra)
 }
@@ -393,6 +377,5 @@ btnNovoDiagrama.addEventListener("click",function(){
 })
 
 // contar tempo (transformar em minutos)
-// configurar versão para impresão
-// colocar simbolo página inicial
+
 
