@@ -3,17 +3,27 @@
     margin: 0px;
     border: 0px;
 }
+header{
+    color: white;
+    background-color: rgb(2, 2, 28);
+    width: 100%;
+}
+
+
 header>*{
     margin: 25px;
+    
 }
+
+
 
 #pagina-inicial, #pagina-inicial>a>img{
     margin: 3px 0px 3px 3px;
     width: 30px;
     height: 30px;
-    background-color: beige;
+    background-color: black;
     color: beige;
-    
+    border-radius: 3px;
 }
 
 
@@ -60,7 +70,7 @@ header>*{
     vertical-align: middle;
     box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.521);
 }
-.datador{
+.datador, .big-date, .calendario{
     display: flex;
     width: 30px;
     height: 30px;
@@ -71,5 +81,13 @@ header>*{
     text-align: center;
     align-items: center;
     justify-content: center;
- 
+}
+
+.calendario{
+    width:  60px;
+    height: 22px;
+}
+.big-date{
+    height: 20px;
+    width: 33px;
 }

@@ -16,6 +16,7 @@ body{
     height: 30px;
     background-color: beige;
     color: beige;
+    border-radius: 3px;
     
 }
 h1{
@@ -30,6 +31,7 @@ input, select{
     border:  1px solid black;
     background-color: #eeb600;
     text-align: center;
+    border-radius: 5px;
 }
 .btn-novo{
     display: inline;
@@ -40,6 +42,7 @@ input, select{
     background-color: #eeb600;
     font-weight: bolder;
     box-shadow: 1px 1px 1px black;
+    border-radius: 5px;
 }
 .btn-novo:hover{
     transform: scale(1.1);
@@ -49,6 +52,7 @@ main{
     width: 95%;
     position: relative;
     border: 1px solid black;
+    border-radius: 5px;
 }
 .cabecalho-fixo{
     margin-top: 15px;
@@ -72,6 +76,7 @@ main{
     box-shadow: 2px 2px 2px black;
     text-align: center;
     padding: 15px 0px;
+    border-radius: 5px;
 }
 .diagrama-conteiner{
     overflow-x: auto;

@@ -59,15 +59,30 @@ inputRadios.forEach(radio => {
         ponteiroS.frequencia = Number(document.querySelector('input[name="modo"]:checked').value)
     })
 })
+const divComplica = document.createElement('div')
+divComplica.setAttribute('class','invisivel')
+mostrador.appendChild(divComplica)
+
+
 inputComplicador.forEach(radio=>{
     radio.addEventListener('change',()=>{
         let complic = document.querySelector('input[name="complicador"]:checked').value
         console.log('clicado',complic)
-        if (complic = 'datador'){
-            const divComplica = document.createElement('div')
+        
+        
+        let dia = new Date().getDate()
+        let dSemana = new Date().toLocaleDateString('pt-BR', { weekday: 'short' }).replace('.','')
+        dia  = dia < 10? `0${dia}`:dia
+        if (complic == 'datador'){
             divComplica.setAttribute('class','datador')
-            divComplica.innerHTML = new Date().getDate() < 10? `0${new Date().getDate()}`:new Date().getDate()
-            mostrador.appendChild(divComplica)
+            divComplica.innerHTML = dia
+        } else if (complic == 'big-date'){
+                divComplica.setAttribute('class','big-date')
+                divComplica.innerHTML = `${Math.floor(dia/10)} | ${dia%10}`
+        } else if (complic == 'calendario'){
+            divComplica.setAttribute('class','calendario')
+            divComplica.innerHTML = `${dia} | ${dSemana}` 
+            
         }
     })
 })
