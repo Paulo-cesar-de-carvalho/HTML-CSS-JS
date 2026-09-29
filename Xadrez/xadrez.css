@@ -4,17 +4,20 @@
     padding: 0px;
 }
 :root{
-    --larguraTabuleiro: 480px;
-    --larguraCasa:60px;
+    --corCasasClaras:grey;
+    --corCasasEscuras:black;
+    --larguraTabuleiro: 400px;
+    --larguraCasa:50px;
+    --larguraTabuleiroMedio:560px;
+    --larguraCasaMedia: 70px;
 }
 body, main, section, h1{
     width: var(--larguraTabuleiro);
-    margin-left: 15px;
     text-align: center;
+    
 }
 .tabuleiro{
     border-collapse: collapse;
-    margin: auto;
     border: 0px black solid;
     position: absolute;
     width: var(--larguraTabuleiro);
@@ -33,4 +36,39 @@ body, main, section, h1{
     text-align: center;
     align-content: center;
     font-size: 1.8em;
+}
+.casa-clara{
+    background-color: var(--corCasasClaras);
+}
+.casa-escura{
+    background-color: var(--corCasasEscuras);
+}
+
+
+@media screen and (min-width:400px) {
+    body, main, section, h1{
+        text-align: center;
+        /* margin: auto; */
+    }
+}
+
+@media screen and (min-width:660px) {
+    body{
+        background-color: blue;
+        margin-left: 30px;
+    }
+    
+    .cada-casa{
+        width: var(--larguraCasaMedia);
+        height: var(--larguraCasaMedia);
+
+    }
+    .tabuleiro{
+        width: var(--larguraTabuleiroMedio);
+        height: var(--larguraTabuleiroMedio);
+    }
+    body, main, section, h1{
+    width: var(--larguraTabuleiroMedio);
+    
+    }
 }

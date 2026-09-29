@@ -7,7 +7,7 @@ function montar_tabuleiro(tableTabuleiro, referencia='brancas'){
             const cadaCasa = document.createElement('td')
             cadaCasa.setAttribute('class','cada-casa')
             cadaCasa.setAttribute('data-nCasa',determinar_nome_casa(x,y,referencia))
-            cadaCasa.setAttribute('style',`background-color:${determinar_cor(x,y)}`)
+            cadaCasa.classList.add(determinar_classe_cor(x,y))
             cadaCasa.innerText = determinar_nome_casa(x,y,referencia)
             cadaLinha.appendChild(cadaCasa)
         }
@@ -16,8 +16,8 @@ function montar_tabuleiro(tableTabuleiro, referencia='brancas'){
 }
 
 montar_tabuleiro(tableTabuleiro,'pretas')
-function determinar_cor(x,y){
-    let cor = (x % 2 ==0 && y % 2 ==0)|| (x % 2 ==1 && y % 2 ==1) ? 'grey':'black'
+function determinar_classe_cor(x,y){
+    let cor = (x % 2 ==0 && y % 2 ==0)|| (x % 2 ==1 && y % 2 ==1) ? 'casa-clara':'casa-escura'
     return cor
 }
 function determinar_nome_casa(x,y,referencia){
