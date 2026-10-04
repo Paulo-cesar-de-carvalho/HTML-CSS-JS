@@ -6,13 +6,13 @@ const pecas = [
     ['\u265C','\u265E','\u265D','\u265B','\u265A','\u265F','\u2656','\u2658','\u2657','\u2655','\u2654','\u2659']
 ]
 
-function distribuir_pecas(fen){
-    console.log(fen)
+function distribuir_pecas(fen){ //para um array de pecas
+    //console.log(fen)
     fen = fen.substring(0,fen.indexOf(' ')).replaceAll('/','')
-    console.log(fen)
+    //console.log(fen)
     let colPecas = []
     for(let letra of fen){
-        console.log(letra, letra>0 && letra<9 )
+        //console.log(letra, letra>0 && letra<9 )
         if (letra>0 && letra <=8){
             for (let i =1;i<=letra;i++){
                 colPecas.push(' ')
@@ -23,12 +23,27 @@ function distribuir_pecas(fen){
     }
     return colPecas
 }
+function determinar_cor_peca(peca){
+    let cor  =  peca == peca.toUpperCase()? 'peca-clara':'peca-escura'
+    return cor
+}
 
-function inserir_pecas_tabuleiro(fen, tableTabuleiro){
+function inserir_pecas_tabuleiro(fen, tableTabuleiroHtml){
+    const casasHtml = [...tableTabuleiroHtml.querySelectorAll('td')]
+    
+    const pecasDistribuidas = distribuir_pecas(fen)
+    //console.log(casasHtml,pecasDistribuidas)
+    casasHtml.map((c,i)=>{
+        const cadaPeca = pecasDistribuidas[i]
+        c.classList.add(determinar_cor_peca(cadaPeca))
+
+        c.innerHTML = cadaPeca == " "? " " : pecas[1][ pecas[0].indexOf(cadaPeca)]
+    }) 
+    
 
 
 }
 const tabelaTabuleiro = document.querySelector('#tabuleiro')
 
-inserir_pecas_tabuleiro(codigoFen,tableTabuleiro)
-console.log(distribuir_pecas(codigoFen),distribuir_pecas(codigoFen).length)
+//inserir_pecas_tabuleiro(codigoFen,tableTabuleiro)
+//console.log(distribuir_pecas(codigoFen),distribuir_pecas(codigoFen).length)

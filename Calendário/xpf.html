@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>X.F</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: lightgreen;
+            margin: 0;
+            padding: 20px;
+            display: block;
+            justify-content: center;
+            margin: 0 auto;
+            width: 100%;
+            max-width: 460px;
+        }
+        .pagina-inicial, a {
+            top: 10px;
+            left: 10px;
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        p {
+            margin: 10px 0;
+        }
+        input{
+            margin: 5px;
+            text-align: center;
+            font-weight: bold;
+            height: 30px;
+            border-radius: 5px;
+        }
+        .invisivel {
+            display: none;
+        }
+        .p-resultado {
+            font-size: 2em;
+            margin: 20px auto;
+            text-align: center;
+            height: 30px;
+           
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="pagina-inicial">
+            <a  href="../paginaInicial/index.html"><img class="pagina-inicial" src="../Arquivos em comum/paginaInicial.png" alt="página Inicial" srcset=""></a>
+        </div>
+        <h1>Jogue X.F</h1>
+    </header>
+    
+        <main>
+            <p>
+                <label for="quantidade">Informe a quantidade de dígitos do número a ser descoberto:</label>
+                <input type="number" id="quantidade" name="quantidade" min="1" max="10" value="3">
+                <input type="button" value="Novo Jogo" id="btn-novo"  >
+            </p>
+
+            <p id="numero-sorteado" class="invisivel"></p>
+
+            <p class="invisivel" id="algarismo-container">
+                <label for="algarismo">Informe o algarismo que deseja testar e acione ok:</label>
+                <input type="number" id="algarismo" name="algarismo" >
+                <input type="button" value="Ok" id="btn-ok">
+            </p>
+            <div id="resultado">
+
+            </div>
+
+            </div>
+        </main>
+    
+</body>
+    <script>
+        const qteAlg= Number(document.querySelector('#quantidade').value);
+
+        btnNovo = document.querySelector('#btn-novo').addEventListener('click', ()=>{
+            const qteAlg= Number(document.querySelector('#quantidade').value);
+            const numeroSorteado = sortear_numero(qteAlg);
+            document.querySelector('#algarismo-container').classList.remove('invisivel');
+            document.querySelector('#algarismo').focus();
+            document.querySelector('#numero-sorteado').innerText = numeroSorteado;
+            document.querySelector('#resultado').innerHTML = '';
+            console.log(numeroSorteado);
+        });
+        
+        function sortear_numero(qteAlg) {
+            const algarismo= document.querySelector('#algarismo').value;
+            let numerais = [0,1,2,3,4,5,6,7,8,9]
+            let numerosSorteados = [];
+            for (let i = 0; i < qteAlg; i++) {
+                let n = Math.floor(Math.random() * numerais.length);
+                let numeroSorteado = numerais[n];
+                numerais.splice(n, 1); // Remove o número sorteado do array para evitar repetições
+                numerosSorteados.push(numeroSorteado);
+            }
+            return numerosSorteados.join('');
+        }
+        // const numeroSorteado = 587
+        // console.log(compararNumeros(sortear_numero(3), 587));
+        
+        function compararNumeros(nSorteado, nInformado) {
+            
+            console.log(nInformado, nSorteado);
+            nSorteado = nSorteado.toString();
+            nInformado = nInformado.toString();
+            let x =0, p = 0, f=0
+            for (let i = 0; i < nSorteado.length; i++) {
+                if (nSorteado[i] === nInformado[i]) {f+=1}
+                else if (nInformado.includes(nSorteado[i])) { p+=1 }
+                else {x+=1}
+            }          
+            return 'X'.repeat(x) + '.'.repeat(p) + 'F'.repeat(f);
+        }
+
+        const btnOk = document.querySelector('#btn-ok').addEventListener('click', ()=>{
+            const nSorteado = document.querySelector('#numero-sorteado').innerText;
+            const inputAlgarismo= document.querySelector('#algarismo');
+            const resultado = compararNumeros(nSorteado, inputAlgarismo.value);
+            const pResult = document.createElement('p');
+            if (!ehValido(qteAlg, inputAlgarismo.value)) {
+                return;
+            }
+            pResult.classList.add('p-resultado');
+            pResult.innerText = `${inputAlgarismo.value}             ${resultado}`
+            document.querySelector('#resultado').appendChild(pResult);
+            inputAlgarismo.value = '';
+            inputAlgarismo.focus();
+            if (resultado === 'F'.repeat(nSorteado.length)) {
+                acertou(pResult.parentElement);
+            }
+
+        });
+
+        function acertou(divResultado) {
+         
+                document.querySelector('#algarismo-container').classList.add('invisivel');
+                const qteTentativas = divResultado.querySelectorAll('.p-resultado').length;
+                divResultado.innerHTML += `<p class="p-resultado">Parabéns! Você acertou o número sorteado em ${qteTentativas} tentativas!</p>`;
+            
+        }
+
+
+        const algarismo= document.querySelector('#algarismo');
+        function ehValido(qteAlg, algarismo) {
+            const nSorteado = document.querySelector('#numero-sorteado').innerText;
+            if (algarismo.length !== qteAlg) {
+                alert(`O número informado deve ter ${qteAlg} dígitos.`);
+                return false;
+            }
+            //não pode conter dígitos repetidos:
+            for (let i = 0; i < algarismo.length; i++) {
+                if (algarismo.indexOf(algarismo[i]) !== i) {
+                    alert('O número informado não pode conter dígitos repetidos.');
+                    return false;
+                }
+            }
+            return true;
+        }
+
+
+    </script>
+</html>

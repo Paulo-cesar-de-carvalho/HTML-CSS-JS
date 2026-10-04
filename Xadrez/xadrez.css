@@ -4,12 +4,14 @@
     padding: 0px;
 }
 :root{
-    --corCasasClaras:grey;
-    --corCasasEscuras:black;
+    --corCasasClaras:rgb(240,217,181);
+    --corCasasEscuras:rgb(181,136,99);
     --larguraTabuleiro: 400px;
     --larguraCasa:50px;
     --larguraTabuleiroMedio:560px;
     --larguraCasaMedia: 70px;
+    --coraPecasClara:white;
+    --corPecasEscuras:black;
 }
 body, main, section, h1{
     width: var(--larguraTabuleiro);
@@ -31,7 +33,7 @@ body, main, section, h1{
     height: var(--larguraCasa);
 }
 .cada-casa:hover{
-    color: rgba(162, 249, 220,0.4);
+    color: rgba(17, 17, 17, 0.4);
     cursor: pointer;
     text-align: center;
     align-content: center;
@@ -43,12 +45,27 @@ body, main, section, h1{
 .casa-escura{
     background-color: var(--corCasasEscuras);
 }
+.peca-clara{
+    color: var(--coraPecasClara);
+    font-size: 3em;
+}
+.peca-escura{
+    color: var(--corPecasEscuras) ;
+    font-size: 3em;
+}
+.botao{
+    background-color: green;
+    width: 50px;
+    height: 30px;
+    display: inline-block;
+}
+
 
 
 @media screen and (min-width:400px) {
     body, main, section, h1{
         text-align: center;
-        /* margin: auto; */
+        margin: auto; 
     }
 }
 

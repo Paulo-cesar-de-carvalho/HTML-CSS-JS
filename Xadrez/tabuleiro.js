@@ -1,6 +1,7 @@
 const tableTabuleiro = document.querySelector('#tabuleiro')
 
 function montar_tabuleiro(tableTabuleiro, referencia='brancas'){
+    tableTabuleiro.innerText = ''
     for(let x =1; x<=8; x++){
         const cadaLinha = document.createElement('tr')
         for(y=1;y<=8;y++){
@@ -15,7 +16,7 @@ function montar_tabuleiro(tableTabuleiro, referencia='brancas'){
     }
 }
 
-montar_tabuleiro(tableTabuleiro,'pretas')
+montar_tabuleiro(tableTabuleiro,'brancas')
 function determinar_classe_cor(x,y){
     let cor = (x % 2 ==0 && y % 2 ==0)|| (x % 2 ==1 && y % 2 ==1) ? 'casa-clara':'casa-escura'
     return cor
