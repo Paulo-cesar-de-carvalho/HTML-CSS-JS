@@ -81,13 +81,18 @@ header>*{
     text-align: center;
     align-items: center;
     justify-content: center;
+    box-shadow: inset 3px 3px 6px rgba(0, 0, 0, 0.2),       /* Sombra escura (topo/esquerda) */
+    inset -3px -3px 6px rgba(255, 255, 255, 0.7); /* Sombra clara (base/direita) */
 }
+
 
 .calendario{
     width:  60px;
     height: 22px;
+    font-size: 0.7rem;
 }
 .big-date{
     height: 20px;
     width: 33px;
+    font-size: 0.8rem;
 }

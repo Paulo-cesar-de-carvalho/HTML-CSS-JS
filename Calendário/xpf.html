@@ -46,6 +46,8 @@
             margin: 20px auto;
             text-align: center;
             height: 30px;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
            
         }
     </style>
@@ -88,6 +90,11 @@
             const numeroSorteado = sortear_numero(qteAlg);
             document.querySelector('#algarismo-container').classList.remove('invisivel');
             document.querySelector('#algarismo').focus();
+            document.querySelector('#algarismo').addEventListener('keypress', (event) => {
+                if (event.key === 'Enter') {
+                    document.querySelector('#btn-ok').click();
+                }
+            });
             document.querySelector('#numero-sorteado').innerText = numeroSorteado;
             document.querySelector('#resultado').innerHTML = '';
             console.log(numeroSorteado);
@@ -127,7 +134,7 @@
             const inputAlgarismo= document.querySelector('#algarismo');
             const resultado = compararNumeros(nSorteado, inputAlgarismo.value);
             const pResult = document.createElement('p');
-            if (!ehValido(qteAlg, inputAlgarismo.value)) {
+            if (!ehValido(nSorteado.length, inputAlgarismo.value)) {
                 return;
             }
             pResult.classList.add('p-resultado');
