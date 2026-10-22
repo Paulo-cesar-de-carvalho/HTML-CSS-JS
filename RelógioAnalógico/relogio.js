@@ -42,7 +42,6 @@ class Ponteiro {
     girar = ()=>{
         frequencia = Number(document.querySelector('input[name="modo"]:checked').value)
         let segundosArredondados = Math.floor(segundosDoDia()/frequencia*1000)*(frequencia/1000)
-        //console.log(segundosDoDia())
         const angulo = (segundosArredondados/ this.periodo * 6 - 90) % 360
         const pont1 = this.eu
         pont1.setAttribute('style',`rotate:${angulo}deg;width:${this.comprimento}px;height:${this.largura}px`)
@@ -67,9 +66,6 @@ mostrador.appendChild(divComplica)
 inputComplicador.forEach(radio=>{
     radio.addEventListener('change',()=>{
         let complic = document.querySelector('input[name="complicador"]:checked').value
-        console.log('clicado',complic)
-        
-        
         let dia = new Date().getDate()
         let dSemana = new Date().toLocaleDateString('pt-BR', { weekday: 'short' }).replace('.','')
         dia  = dia < 10? `0${dia}`:dia

@@ -1,0 +1,21 @@
+html,body{
+    background-color:lightgray;
+    height:95vh;
+}
+table{
+    border: 1px solid black;
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 550px;
+    margin: 0 auto;
+}
+td, th{
+    border: 1px solid black;
+    text-align: center;
+}
+
+.primeira-coluna{
+    width: 30%;
+    font-weight: bold;
+    text-align: left;
+}

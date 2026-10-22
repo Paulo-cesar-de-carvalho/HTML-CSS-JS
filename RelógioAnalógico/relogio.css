@@ -9,13 +9,9 @@ header{
     width: 100%;
 }
 
-
 header>*{
     margin: 25px;
-    
 }
-
-
 
 #pagina-inicial, #pagina-inicial>a>img{
     margin: 3px 0px 3px 3px;
@@ -25,7 +21,6 @@ header>*{
     color: beige;
     border-radius: 3px;
 }
-
 
 .mostrador{
     border: 1px solid black;

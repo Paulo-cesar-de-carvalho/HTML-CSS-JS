@@ -14,7 +14,7 @@ class Dia{
         this.primeiroDiaMes = this.determinar_primeiro_dia_mes()
         this.primeiroDiaCalendario = this.determinar_primeiro_dia_calendario()
         this.largura = this.areaCalendario.offsetWidth/7
-        this.altura = this.areaCalendario.offsetHeight/7
+        this.altura = this.largura * 0.7//this.areaCalendario.offsetHeight/7
         this.top = (Math.ceil(posicao/7)-1)*this.altura+60
         this.left = ((posicao-1) % 7)*this.largura
         this.dataAtual = new Date (this.primeiroDiaCalendario.setDate(this.primeiroDiaCalendario.getDate()+posicao-1) )

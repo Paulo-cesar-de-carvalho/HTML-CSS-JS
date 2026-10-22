@@ -1,19 +1,22 @@
-for (tema of todosTemas){
+todosTemas.map((tema)=>{
     let opcao = document.createElement("option")
     opcao.innerText = tema
     opcoesTemas.appendChild(opcao)
-}
+})
 
 function aleatorio_entre(inf, sup){
     return Math.floor(Math.random()*(sup - inf + 1) + inf)
 }
-function montar_diagrama(arrayCompleto){
+function montar_diagrama(arrayCompleto,arrayClasses){
     let tbDiagrama = document.querySelector("#diagrama")
     //Transforma um array em tabela html
-    arrayCompleto.map((linha)=>{
+    arrayCompleto.map((linha,iLinha)=>{
         let trDiagrama = document.createElement("tr")
-        linha.map((e)=>{
+        linha.map((e,iColuna)=>{
             let tdDiagrama = document.createElement("td")
+            let palavra = arrayClasses[iLinha][iColuna]
+            //console.log(`palavra: ${palavra}, linha: ${iLinha}, coluna: ${iColuna}`)
+            tdDiagrama.dataset.valor = palavra
             tdDiagrama.innerText = e
             trDiagrama.appendChild(tdDiagrama)
         })
@@ -32,214 +35,56 @@ function montar_array (numColunas, numLinhas){
     }
     return arrayCompleto
 }
-function encaixar_palavra(palavra,arrayCompleto,dificuldade,incluidas){
+
+function encaixar_palavra(palavra,arrayCompleto,arrayClasses,dificuldade,incluidas){
+    
+    const nLin = arrayCompleto.length
+    const nCol = arrayCompleto[0].length
     palavra = palavra.toUpperCase()
     let nLetra = palavra.length
-    direcao = aleatorio_entre(0,dificuldade-1)
-    switch (direcoes[direcao]){
-        case "horizontal" :  
-            for (let t = 0; t < tentativas;t++){
-                let linhaInicialPalavra = aleatorio_entre(0,nLinhas-1)
-                let colunaInicialPalavra = aleatorio_entre(0, nColunas-nLetra)
-                // Testar se é possível escrever neste lugar
-                let espacoVazio = false
-                for (let i = 0; i < nLetra ; i++){
-                    if (arrayCompleto[linhaInicialPalavra][colunaInicialPalavra+i] == "" || arrayCompleto[linhaInicialPalavra][colunaInicialPalavra+i] == palavra[i] ){
-                        espacoVazio = true
-                    } else{
-                        espacoVazio = false
-                        break
-                    }
-                }
-                //Impressão da palavra quando possível for:
-                if (espacoVazio){
-                    for (let i = 0;i<nLetra;i++){
-                        arrayCompleto[linhaInicialPalavra][colunaInicialPalavra+i]=palavra[i]
-                    }
-                    incluidas ++
-                    break
-                }
+    const direcoes = [[0,1],[1,0],[1,1],[1,-1],[-1,0],[0,-1],[-1,-1],[-1,1]]
+    const tentativas = 100 
+    for (let t = 0; t < tentativas;t++){
+        const dir = aleatorio_entre(0,dificuldade-1)
+        const dirX = direcoes[dir][0], dirY = direcoes[dir][1]  
+        const linInicial = dirY == -1? nLetra-1:0
+        const colInicial = dirX == -1? nLetra-1:0 
+        const linFinal = dirY == 1 ? nLin-nLetra: nLin-1
+        const colFinal = dirX ==1 ?  nCol-nLetra : nCol -1
+        console.log(`tentativa: ${t+1} de ${tentativas}, palavra: ${palavra}), direção: ${dir}`  )
+        let linhaInicialPalavra = aleatorio_entre(linInicial,linFinal)
+        let colunaInicialPalavra = aleatorio_entre(colInicial,colFinal)
+        // Testar se é possível escrever neste lugar
+        let espacoVazio = false
+        for (let i = 0; i < nLetra ; i++){
+            let posicao = arrayCompleto[linhaInicialPalavra+dirY*i][colunaInicialPalavra+dirX*i]
+            if (posicao == "" || posicao == palavra[i] ){
+                espacoVazio = true
+            } else{
+                espacoVazio = false
+                break
             }
-            break
-        case "vertical" : 
-            for (let t = 0; t < tentativas;t++){
-                let linhaInicialPalavra = aleatorio_entre(0,nLinhas-nLetra)
-                let colunaInicialPalavra = aleatorio_entre(0, nColunas-1)
-                // Testar se é possível escrever neste lugar
-                let espacoVazio = false
-                for (let i = 0; i < nLetra ; i++){
-                    if (arrayCompleto[linhaInicialPalavra+i][colunaInicialPalavra] == "" || arrayCompleto[linhaInicialPalavra+i][colunaInicialPalavra] == palavra[i] ){
-                        espacoVazio = true
-                    } else{
-                        espacoVazio = false
-                        break
-                    }
-                }
-                //Impressão da palavra quando possível for:
-                if (espacoVazio){
-                    for (let i = 0;i<nLetra;i++){
-                        arrayCompleto[linhaInicialPalavra + i][colunaInicialPalavra]=palavra[i]
-                    }
-                    incluidas ++
-                    break
-                }
+        }
+        //Impressão da palavra quando possível for:
+        if (espacoVazio){
+            for (let i = 0;i<nLetra;i++){
+                arrayCompleto[linhaInicialPalavra+dirY*i][colunaInicialPalavra+dirX*i]=palavra[i]
+                console.log(palavra)
+                arrayClasses[linhaInicialPalavra+dirY*i][colunaInicialPalavra+dirX*i]=palavra
             }
+           // console.log(arrayClasses)
+           // console.log(`${palavra}, linInicial: ${linInicial},  colInicial: ${colInicial},linFinal: ${linFinal}, colFinal: ${colFinal}, dirX: ${dirX}, dirY: ${dirY}`)
+            //console.log(`linhaInicialPalavra: ${linhaInicialPalavra}, colunaInicialPalavra: ${colunaInicialPalavra}`)
+            incluidas ++
             break
-        case "diagonalPrincipal" :  
-            for (let t = 0; t < tentativas;t++){
-                let linhaInicialPalavra = aleatorio_entre(0,nLinhas-nLetra)
-                let colunaInicialPalavra = aleatorio_entre(0, nColunas-nLetra)
-                // Testar se é possível escrever neste lugar
-                let espacoVazio = false
-                for (let i = 0; i < nLetra ; i++){
-                    if (arrayCompleto[linhaInicialPalavra+i][colunaInicialPalavra+i] == "" || arrayCompleto[linhaInicialPalavra+i][colunaInicialPalavra+i] == palavra[i] ){
-                        espacoVazio = true
-                    } else{
-                        espacoVazio = false
-                        break
-                    }
-                }
-                //Impressão da palavra quando possível for:
-                if (espacoVazio){
-                    for (let i = 0;i<nLetra;i++){
-                        arrayCompleto[linhaInicialPalavra + i][colunaInicialPalavra + i]=palavra[i]
-                    }
-                    incluidas ++
-                    break
-                }
-            }
-            break
-        case "diagonalSecundária" :  
-            for (let t = 0; t < tentativas;t++){
-                let linhaInicialPalavra = aleatorio_entre(nLetra-1,nLinhas-1)
-                let colunaInicialPalavra = aleatorio_entre(0, nColunas-nLetra)
-                // Testar se é possível escrever neste lugar
-                let espacoVazio = false
-                for (let i = 0; i < nLetra ; i++){
-                    if (arrayCompleto[linhaInicialPalavra-i][colunaInicialPalavra+i] == "" || arrayCompleto[linhaInicialPalavra-i][colunaInicialPalavra+i] == palavra[i] ){
-                        espacoVazio = true
-                    } else{
-                        espacoVazio = false
-                        break
-                    }
-                }
-                //Impressão da palavra quando possível for:
-                if (espacoVazio){
-                    for (let i = 0;i<nLetra;i++){
-                        arrayCompleto[linhaInicialPalavra - i][colunaInicialPalavra + i]=palavra[i]
-                    }
-                    incluidas ++
-                    break
-                }
-            }
-            break
-        case "horizontalInvertida" :  
-            for (let t = 0; t < tentativas;t++){
-                let linhaInicialPalavra = aleatorio_entre(0,nLinhas-1)
-                let colunaInicialPalavra = aleatorio_entre(nLetra-1, nColunas-1)
-                // Testar se é possível escrever neste lugar
-                let espacoVazio = false
-                for (let i = 0; i < nLetra ; i++){
-                    if (arrayCompleto[linhaInicialPalavra][colunaInicialPalavra-i] == "" || arrayCompleto[linhaInicialPalavra][colunaInicialPalavra-i] == palavra[i] ){
-                        espacoVazio = true
-                    } else{
-                        espacoVazio = false
-                        break
-                    }
-                }
-                //Impressão da palavra quando possível for:
-                if (espacoVazio){
-                    for (let i = 0;i<nLetra;i++){
-                        arrayCompleto[linhaInicialPalavra][colunaInicialPalavra-i]=palavra[i]
-                    }
-                    incluidas ++
-                    break
-                }
-            }
-            break
-        case "verticalSubindo" : 
-            for (let t = 0; t < tentativas;t++){
-                let linhaInicialPalavra = aleatorio_entre(nLetra-1,nLinhas-1)
-                let colunaInicialPalavra = aleatorio_entre(0, nColunas-1)
-                // Testar se é possível escrever neste lugar
-                let espacoVazio = false
-                for (let i = 0; i < nLetra ; i++){
-                    if (arrayCompleto[linhaInicialPalavra-i][colunaInicialPalavra] == "" || arrayCompleto[linhaInicialPalavra-i][colunaInicialPalavra] == palavra[i] ){
-                        espacoVazio = true
-                    } else{
-                        espacoVazio = false
-                        break
-                    }
-                }
-                //Impressão da palavra quando possível for:
-                if (espacoVazio){
-                    for (let i = 0;i<nLetra;i++){
-                        arrayCompleto[linhaInicialPalavra - i][colunaInicialPalavra]=palavra[i]
-                    }
-                    incluidas ++
-                    break
-                }
-            }
-            break
-        case "diagonalPrincialinvertida" :  
-            for (let t = 0; t < tentativas;t++){
-                let linhaInicialPalavra = aleatorio_entre(nLetra-1,nLinhas-1)
-                let colunaInicialPalavra = aleatorio_entre(nLetra-1, nColunas-1)
-                // Testar se é possível escrever neste lugar
-                let espacoVazio = false
-                for (let i = 0; i < nLetra ; i++){
-                    if (arrayCompleto[linhaInicialPalavra-i][colunaInicialPalavra-i] == "" || arrayCompleto[linhaInicialPalavra-i][colunaInicialPalavra-i] == palavra[i] ){
-                        espacoVazio = true
-                    } else{
-                        espacoVazio = false
-                        break
-                    }
-                }
-                //Impressão da palavra quando possível for:
-                if (espacoVazio){
-                    for (let i = 0;i<nLetra;i++){
-                        arrayCompleto[linhaInicialPalavra - i][colunaInicialPalavra - i]=palavra[i]
-                    }
-                    incluidas ++
-                    break
-                }
-            }
-            break
-        case "diagonalSecundáriaInvertida" :  
-            for (let t = 0; t < tentativas;t++){
-                let linhaInicialPalavra = aleatorio_entre(0,nLinhas-nLetra)
-                let colunaInicialPalavra = aleatorio_entre(nLetra-1, nColunas-1)
-                // Testar se é possível escrever neste lugar
-                let espacoVazio = false
-                for (let i = 0; i < nLetra ; i++){
-                    if (arrayCompleto[linhaInicialPalavra+i][colunaInicialPalavra-i] == "" || arrayCompleto[linhaInicialPalavra+i][colunaInicialPalavra-i] == palavra[i] ){
-                        espacoVazio = true
-                    } else{
-                        espacoVazio = false
-                        break
-                    }
-                }
-                //Impressão da palavra quando possível for:
-                if (espacoVazio){
-                    for (let i = 0;i<nLetra;i++){
-                        arrayCompleto[linhaInicialPalavra + i][colunaInicialPalavra - i]=palavra[i]
-                    }
-                    incluidas ++
-                    break
-                }
-            }
-            break
-        default :
-            console.log("nenhum")
-    
+        }
     }
     return incluidas
-
 }
-function encaixar_todas_palavras(arrayPalavras,arrayCompleto,dificuldade){
+function encaixar_todas_palavras(arrayPalavras,arrayCompleto,arrayClasses,dificuldade){
     let incluidas = 0
     for (palavra of arrayPalavras){         
-        incluidas += encaixar_palavra(palavra,arrayCompleto,dificuldade,0)
+        incluidas += encaixar_palavra(palavra,arrayCompleto,arrayClasses,dificuldade,0)
     }
     return incluidas    
 }
@@ -282,24 +127,31 @@ function preencher_vazias_com_configuracao (){
     //inclusao de classe e id e também preenchimento das letras nos espaços vazios
     for (td of todosTds){
         if (td.innerText != "" ){
-            td.setAttribute("id","tdPreenchida")
+            td.setAttribute("class","tdPreenchida")
         }else{
-            td.innerText = letras[aleatorio_entre(0,letras.length-1)]
-            td.setAttribute("id","tdErro")
+            td.innerText ="-" //letras[aleatorio_entre(0,letras.length-1)]
+            td.setAttribute("class","tdErro")
 
         }
     }
     //ao clicar em uma letra correta:
-    let letrasPreenchidas = document.querySelectorAll("#tdPreenchida")
+    let letrasPreenchidas = document.querySelectorAll(".tdPreenchida")
     let totalLetras = letrasPreenchidas.length
     for (cadaLetra of letrasPreenchidas){
         let clicadoCorreto = false
-        cadaLetra.addEventListener("click", function(){
+        cadaLetra.addEventListener("click", (e)=>{
             if (!clicadoCorreto && podeJogar){
-                this.setAttribute("class", "tdPreenchida")
-                contagemAcerto ++
+                let palavra = e.target.dataset.valor
+                let letrasDaPalavra = document.querySelectorAll(`[data-valor="${palavra}"]`)
+                letrasDaPalavra.forEach((tdLetra)=>{
+                    tdLetra.setAttribute("class", "tdPreenchidaCorreta")
+                    clicadoCorreto = true
+                    contagemAcerto ++
+                })
+                //e.target.setAttribute("class", "tdPreenchida")
+                
                 campoPercentual.innerText =`${contagemAcerto} de ${totalLetras} ( ${(contagemAcerto/totalLetras*100).toFixed(2)}%)`
-                clicadoCorreto = true
+                
                 vitoria(contagemAcerto,totalLetras)
             }
             
@@ -307,12 +159,12 @@ function preencher_vazias_com_configuracao (){
         })
     }
     //ao clicar em uma letra incorreta:
-    let letrasErradas = document.querySelectorAll("#tdErro")
+    let letrasErradas = document.querySelectorAll(".tdErro")
     for (cadaLetra of letrasErradas){
         let clicadoIncorreto = false
-        cadaLetra.addEventListener("click", function(){
+        cadaLetra.addEventListener("click", (e)=>{
             if(!clicadoIncorreto && podeJogar){
-                this.setAttribute("class", "tdErro")
+                e.target.setAttribute("class", "tdErroClicado")
                 contagemErro ++
                 campoQteErros.innerText = (`${contagemErro}`)
                 clicadoIncorreto = true
@@ -324,8 +176,9 @@ function preencher_vazias_com_configuracao (){
 }
 function montar_pagina_completa (nColunas,nLinhas,nPalavras,base,dificuldade){
     let arrayCompleto = montar_array(nColunas,nLinhas)
+    let arrayClasses = montar_array(nColunas,nLinhas)
     palavrasListadas = escolher_palavras(nPalavras,base)
-    let incluidas = encaixar_todas_palavras(palavrasListadas,arrayCompleto,dificuldade)
+    let incluidas = encaixar_todas_palavras(palavrasListadas,arrayCompleto,arrayClasses,dificuldade)
     if (!(nPalavras==incluidas)){
         document.getElementById("palavras-não-encaixadas").innerText = `A t e n ç ã o!!! ${nPalavras-incluidas} das palavras listadas não puderam ser encaixadas!!!`
     }else{
@@ -333,7 +186,8 @@ function montar_pagina_completa (nColunas,nLinhas,nPalavras,base,dificuldade){
     }
     campoStatusJogo.innerText = ""
     
-    montar_diagrama(arrayCompleto)
+    montar_diagrama(arrayCompleto,arrayClasses)
+    //console.log(arrayCompleto)
     listar_todas_palavras(palavrasListadas)
     preencher_vazias_com_configuracao ()
     momentoInicial = (new Date()).getTime()

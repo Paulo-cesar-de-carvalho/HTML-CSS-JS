@@ -90,11 +90,7 @@
             const numeroSorteado = sortear_numero(qteAlg);
             document.querySelector('#algarismo-container').classList.remove('invisivel');
             document.querySelector('#algarismo').focus();
-            document.querySelector('#algarismo').addEventListener('keypress', (event) => {
-                if (event.key === 'Enter') {
-                    document.querySelector('#btn-ok').click();
-                }
-            });
+            
             document.querySelector('#numero-sorteado').innerText = numeroSorteado;
             document.querySelector('#resultado').innerHTML = '';
             console.log(numeroSorteado);
@@ -136,13 +132,15 @@
             const pResult = document.createElement('p');
             if (!ehValido(nSorteado.length, inputAlgarismo.value)) {
                 return;
+            }else {
+                pResult.classList.add('p-resultado');
+                pResult.innerText = `${inputAlgarismo.value}             ${resultado}`
+                document.querySelector('#resultado').appendChild(pResult);
+                inputAlgarismo.value = '';
+                inputAlgarismo.focus();
             }
-            pResult.classList.add('p-resultado');
-            pResult.innerText = `${inputAlgarismo.value}             ${resultado}`
-            document.querySelector('#resultado').appendChild(pResult);
-            inputAlgarismo.value = '';
-            inputAlgarismo.focus();
-            if (resultado === 'F'.repeat(nSorteado.length)) {
+           
+            if (resultado == 'F'.repeat(nSorteado.length)) {
                 acertou(pResult.parentElement);
             }
 
@@ -158,9 +156,11 @@
 
 
         const algarismo= document.querySelector('#algarismo');
+
         function ehValido(qteAlg, algarismo) {
             const nSorteado = document.querySelector('#numero-sorteado').innerText;
-            if (algarismo.length !== qteAlg) {
+            if (Number(algarismo.length) !== Number(qteAlg)) {
+                console.log(algarismo.length, qteAlg);
                 alert(`O número informado deve ter ${qteAlg} dígitos.`);
                 return false;
             }
@@ -173,6 +173,7 @@
             }
             return true;
         }
+        //corrigir erro da quantidade digitos inoformados.
 
 
     </script>
