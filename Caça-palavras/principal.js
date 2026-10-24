@@ -154,8 +154,9 @@ function preencher_vazias_com_configuracao (){
                 letrasDaPalavra.forEach((tdLetra)=>{
                     tdLetra.setAttribute("class", "tdPreenchidaCorreta")
                     clicadoCorreto = true
-                    contagemAcerto ++
+                    //contagemAcerto ++
                 })
+                contagemAcerto = document.querySelectorAll(".tdPreenchidaCorreta").length
                 //e.target.setAttribute("class", "tdPreenchida")
                 
                 campoPercentual.innerText =`${contagemAcerto} de ${totalLetras} ( ${(contagemAcerto/totalLetras*100).toFixed(2)}%)`
