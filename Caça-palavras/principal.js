@@ -129,7 +129,7 @@ function preencher_vazias_com_configuracao (){
         if (td.innerText != "" ){
             td.setAttribute("class","tdPreenchida")
         }else{
-            td.innerText ="-" //letras[aleatorio_entre(0,letras.length-1)]
+            td.innerText = letras[aleatorio_entre(0,letras.length-1)]
             td.setAttribute("class","tdErro")
 
         }
@@ -143,6 +143,14 @@ function preencher_vazias_com_configuracao (){
             if (!clicadoCorreto && podeJogar){
                 let palavra = e.target.dataset.valor
                 let letrasDaPalavra = document.querySelectorAll(`[data-valor="${palavra}"]`)
+                //macar palavra encontrada na lista de palavras
+                let listaPalavras = document.querySelector("#palavras")
+                let palavrasListadas = listaPalavras.querySelectorAll("li")
+                palavrasListadas.forEach((li)=>{
+                    if (li.innerText.toUpperCase() == palavra.toUpperCase()){
+                        li.setAttribute("class", "palavra-encontrada")
+                    }
+                })
                 letrasDaPalavra.forEach((tdLetra)=>{
                     tdLetra.setAttribute("class", "tdPreenchidaCorreta")
                     clicadoCorreto = true
@@ -170,7 +178,6 @@ function preencher_vazias_com_configuracao (){
                 clicadoIncorreto = true
                 game_over(contagemErro)
             }
-            
         })
     }
 }
